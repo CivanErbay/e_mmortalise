@@ -1,6 +1,10 @@
 <template>
   <div class="navigation">
-    <h1 class="navigation--headline">E_MMORTALISE</h1>
+    <img
+      class="navigation--headline"
+      src="./../assets/Logo_300ppi_blau.png"
+      alt=""
+    />
     <img class="burger-menu" src="./../assets/menu.png" alt="" />
   </div>
 </template>
@@ -16,8 +20,7 @@ export default {
   height: 50px;
 
   &--headline {
-    font-size: 24px;
-    color: #200e7e;
+    width: 80%;
   }
 
   .burger-menu {
