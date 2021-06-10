@@ -1,17 +1,19 @@
 <template>
-  <Navigation/>
+  <Navigation />
+  <Top />
 </template>
 
 <script>
-import Navigation from './Navigation.vue'
+import Navigation from "./Navigation.vue";
+import Top from "./Top.vue";
 export default {
-  name: 'Landing',
+  name: "Landing",
   components: {
-    Navigation
-  }
+    Navigation,
+    Top,
+  },
 };
 </script>
 
 <style scoped>
-  
 </style>

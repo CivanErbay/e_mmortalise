@@ -16,9 +16,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/variables.scss";
 .navigation {
-  height: 50px;
-
   &--headline {
     width: 80%;
   }

@@ -1,0 +1,21 @@
+$primary-background-color: #200e7e;
+$secondary-background-color: #664fd8; // todo make global scss variables for colors
+$primary-font-color: #2c3e50;
+
+$breakpoints: (
+  // key: breakpoint name
+  // value: breakpoint size
+  default: 0,
+  // mobile portrait
+  xsmall: 320px,
+  // large mobile portrait
+  small: 421px,
+  // mobile landscape
+  medium: 768px,
+  // tablet portrait
+  large: 1024px,
+  // tablet landscape / desktop
+  xlarge: 1520px,
+  // large desktop
+  xxlarge: 1920px // large desktop
+);
