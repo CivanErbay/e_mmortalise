@@ -9,9 +9,16 @@
 <script>
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
+import mapApi from "../api/map.js";
 
 export default {
   name: "MapWrapper",
+  data() {
+    return {
+      markers: [],
+      map: null,
+    };
+  },
   mounted() {
     mapboxgl.accessToken =
       "pk.eyJ1Ijoia2lrb211cm8iLCJhIjoiY2twd3gzMWR3MDBmeTJwcWNuNTcyOHh3NiJ9.l5ICX_-sizKBmCIpIbqryg";
@@ -21,6 +28,22 @@ export default {
       center: [-3, 36], // starting position [lng, lat]
       zoom: 6, // starting zoom
     });
+    this.map = map;
+    this.getMarkers();
+  },
+  methods: {
+    getMarkers() {
+      mapApi.getMarkers().then((markers) => (this.markers = markers));
+    },
+  },
+  watch: {
+    markers(markers) {
+      markers.forEach((marker) => {
+        new mapboxgl.Marker({ color: "black", rotation: 45 })
+          .setLngLat(marker)
+          .addTo(this.map);
+      });
+    },
   },
 };
 </script>
