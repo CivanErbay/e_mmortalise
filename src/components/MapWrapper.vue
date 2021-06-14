@@ -1,0 +1,43 @@
+<template lang="">
+    <div class='map-wrapper'>
+        <div class="header"><span class="title">Map of Souls</span></div>
+        <div id="Mapbox"></div>
+        
+        <div class="footer"><span>Click on one of the dots to open a memorable site</span></div>
+    </div>
+</template>
+<script>
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from "mapbox-gl";
+
+export default {
+  name: "MapWrapper",
+  mounted() {
+    mapboxgl.accessToken =
+      "pk.eyJ1Ijoia2lrb211cm8iLCJhIjoiY2twd3gzMWR3MDBmeTJwcWNuNTcyOHh3NiJ9.l5ICX_-sizKBmCIpIbqryg";
+    const map = new mapboxgl.Map({
+      container: "Mapbox",
+      style: "mapbox://styles/kikomuro/ckpwxbohi2bfa18q6zoeedvlo",
+      center: [-3, 36], // starting position [lng, lat]
+      zoom: 6, // starting zoom
+    });
+  },
+};
+</script>
+<style lang="scss">
+.map-wrapper {
+  min-height: 200px;
+  margin: 2rem 5rem 2rem;
+
+  .header {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  #Mapbox {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 1rem;
+  }
+}
+</style>

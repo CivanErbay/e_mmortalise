@@ -1,14 +1,15 @@
 <template lang="">
     <div class="top">
-        <span class="main-title">E_MMORTALISE is a virtual place
+        <p class="main-title">E_MMORTALISE is a virtual place
 to remember your loved ones who
-couldn't reach safety.</span>
-<span class="subtitle">When remembering someone who’s passed away or vanished without
+couldn't reach safety.</p>
+<p class="subtitle">When remembering someone who’s passed away or vanished without
 a trace, we often think of the places that were important to them, like
 where they sought refuge, their old residences, their family home, or
 places that were special to them.
 
-To choose a place for your loved one Click Here</span>
+To choose a place for your loved one <a>Click Here</a></p>
+
     </div>
 </template>
 <script>
@@ -20,11 +21,22 @@ export default {
 @import "../styles/variables.scss";
 
 .top {
-  padding-top: 4rem;
+  padding: 4rem 6rem 2rem;
   background-image: linear-gradient(
     $secondary-background-color,
     $primary-background-color
   );
   min-height: 200px;
+  color: $secondary-font-color;
+  text-align: left;
+
+  .main-title {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
 }
 </style>
