@@ -19,7 +19,7 @@ export default {
 @import "../styles/variables.scss";
 .navigation {
   &--headline {
-    width: 80%;
+    width: 40%;
   }
 
   .burger-menu {

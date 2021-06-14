@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="top">
+    <div class="top section">
         <p class="main-title">E_MMORTALISE is a virtual place
 to remember your loved ones who
 couldn't reach safety.</p>
@@ -21,15 +21,6 @@ export default {
 @import "../styles/variables.scss";
 
 .top {
-  padding: 4rem 6rem 2rem;
-  background-image: linear-gradient(
-    $secondary-background-color,
-    $primary-background-color
-  );
-  min-height: 200px;
-  color: $secondary-font-color;
-  text-align: left;
-
   .main-title {
     font-size: 2rem;
     font-weight: 500;

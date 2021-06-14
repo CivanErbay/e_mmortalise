@@ -20,3 +20,17 @@ $breakpoints: (
   // large desktop
   xxlarge: 1920px // large desktop
 );
+
+.section {
+  padding: 4rem 6rem 2rem;
+  background-image: linear-gradient($secondary-background-color, $primary-background-color);
+  min-height: 200px;
+  color: $secondary-font-color;
+  text-align: left;
+}
+
+.btn-primary {
+  height: 2rem;
+  background-image: $primary-background-color;
+  border-radius: 1rem;
+}

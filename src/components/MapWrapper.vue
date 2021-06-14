@@ -25,9 +25,10 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "../styles/variables";
+
 .map-wrapper {
   min-height: 200px;
-  margin: 2rem 5rem 2rem;
 
   .header {
     font-size: 2rem;
