@@ -26,21 +26,6 @@ export default {
 @import "../styles/variables.scss";
 
 .top {
-  box-sizing: border-box;
-  padding: 60px calc(25px + (100 - 25) * (100vw - 320px) / (768 - 320));
-
-  @include breakpoint(medium) {
-    padding: 60px calc(100px + (175 - 100) * (100vw - 768px) / (1024 - 768));
-  }
-
-  @include breakpoint(large) {
-      padding: 60px calc(175px + (300 - 175) * (100vw - 1024px) / (1440 - 1024));
-  }
-  
-  @include breakpoint(xlarge) {
-    padding: 60px 300px;
-  }
-
   .main-title {
     font-size: 26px;
     line-height: 36px;
