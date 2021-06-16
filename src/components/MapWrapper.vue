@@ -52,6 +52,7 @@ export default {
 
 .map-wrapper {
   min-height: 200px;
+  padding: 2rem;
 
   .header {
     font-size: 2rem;
@@ -59,7 +60,8 @@ export default {
   }
 
   #Mapbox {
-    width: 100%;
+    margin: auto;
+    width: 90%;
     height: 500px;
     margin-bottom: 1rem;
   }
