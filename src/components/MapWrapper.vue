@@ -55,8 +55,13 @@ export default {
   padding: 2rem;
 
   .header {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+   margin: 45px 0 30px
+  }
+
+  .title {
+    font-family: 'FontBigCaslon';
+    color: $primary-background-color;
+    font-size: 48px;
   }
 
   #Mapbox {

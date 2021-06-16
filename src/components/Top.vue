@@ -1,7 +1,7 @@
 <template lang="">
   <div class="top section">
     <p class="main-title">
-      E_MMORTALISE is a virtual place to remember your loved ones who couldn't
+      <span>E_MMORTALISE</span> is a virtual place to remember your loved ones who couldn't
       reach safety.
     </p>
     <p class="subtitle">
@@ -30,10 +30,14 @@ export default {
   padding: 60px calc(25px + (100 - 25) * (100vw - 320px) / (768 - 320));
 
   @include breakpoint(medium) {
-    padding: 60px calc(100px + (300 - 100) * (100vw - 768px) / (1024 - 768));
+    padding: 60px calc(100px + (175 - 100) * (100vw - 768px) / (1024 - 768));
   }
 
   @include breakpoint(large) {
+      padding: 60px calc(175px + (300 - 175) * (100vw - 1024px) / (1440 - 1024));
+  }
+  
+  @include breakpoint(xlarge) {
     padding: 60px 300px;
   }
 
@@ -42,6 +46,10 @@ export default {
     line-height: 36px;
     font-weight: 500;
     font-family: 'FontBold';
+
+    span {
+      font-family: 'FontBigCaslon';
+    }
 
     @include breakpoint(large) {
       font-size: 45px;
@@ -52,6 +60,7 @@ export default {
   .subtitle {
     font-size: 18px;
     line-height: 1.3;
+    font-family: 'FontBook';
 
     @include breakpoint(medium) {
       font-size: 24px;
