@@ -27,7 +27,6 @@ export default {
 
 .top {
   box-sizing: border-box;
-
   padding: 60px calc(25px + (100 - 25) * (100vw - 320px) / (768 - 320));
 
   @include breakpoint(medium) {
@@ -42,6 +41,7 @@ export default {
     font-size: 26px;
     line-height: 36px;
     font-weight: 500;
+    font-family: 'FontBold';
 
     @include breakpoint(large) {
       font-size: 45px;

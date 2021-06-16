@@ -1,3 +1,49 @@
+@font-face {
+    font-family: FontBold;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Bold.otf") format("opentype");
+}
+@font-face {
+    font-family: FontBoldItalic;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-BoldItalic.otf") format("opentype");
+}
+@font-face {
+    font-family: FontBook;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Book.otf") format("opentype");
+}
+@font-face {
+    font-family: FontBookItalic;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-BookItalic.otf") format("opentype");
+}
+@font-face {
+    font-family: FontLight;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Light.otf") format("opentype");
+}
+@font-face {
+    font-family: FontLightItalic;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-LightItalic.otf") format("opentype");
+}
+@font-face {
+    font-family: FontMedium;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Medium.otf") format("opentype");
+}
+@font-face {
+    font-family: FontMediumItalic;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-MediumItalic.otf") format("opentype");
+}
+@font-face {
+    font-family: FontRegular;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: FontRegularItalic;
+    src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-RegularItalic.otf") format("opentype");
+}
+@font-face {
+    font-family: FontBigCaslon;
+    src: url("../assets/fonts/BigCaslon/BigCaslon.ttf") format("opentype");
+}
+
+
 $primary-background-color: #200e7e;
 $secondary-background-color: #664fd8; // todo make global scss variables for colors
 $primary-font-color: #2c3e50;
