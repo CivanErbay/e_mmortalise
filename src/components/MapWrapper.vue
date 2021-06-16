@@ -39,7 +39,7 @@ export default {
   watch: {
     markers(markers) {
       markers.forEach((marker) => {
-        new mapboxgl.Marker({ color: "black", rotation: 45 })
+        new mapboxgl.Marker({ color: "blue", rotation: 0 })
           .setLngLat(marker)
           .addTo(this.map);
       });

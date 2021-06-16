@@ -3,23 +3,29 @@ $secondary-background-color: #664fd8; // todo make global scss variables for col
 $primary-font-color: #2c3e50;
 $secondary-font-color: #ffffff;
 
-$breakpoints: (
-  // key: breakpoint name
-  // value: breakpoint size
-  default: 0,
-  // mobile portrait
-  xsmall: 320px,
-  // large mobile portrait
-  small: 421px,
-  // mobile landscape
-  medium: 768px,
-  // tablet portrait
-  large: 1024px,
-  // tablet landscape / desktop
-  xlarge: 1520px,
-  // large desktop
-  xxlarge: 1920px // large desktop
-);
+@mixin breakpoint($point) {
+  @if $point == xxlarge {
+    @media (min-width: 1920px) {
+      @content;
+    }
+  } @else if $point == xlarge {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  } @else if $point == large {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $point == medium {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $point == small {
+    @media (max-width: 320px) {
+      @content;
+    }
+  }
+}
 
 .section {
   padding: 4rem 6rem 2rem;
