@@ -7,7 +7,7 @@
     />
     <img v-if="$store.state.isMobile" class="burger-menu" src="./../assets/menu.png" alt="" />
     <div v-else class="navigation--button-wrapper">
-        <button @click="increment" class="btn-primary">Log In</button>
+        <button class="btn-primary">Log In</button>
         <button class="btn-primary">Sign Up</button>
     </div>
   </div>
@@ -18,21 +18,7 @@ export default {
   name: "Navigation",
   data() {
     return {
-      isMobile: false,
     };
-  },
-  methods: {
-    onResize(event) {
-      window.innerWidth < 768 ? this.$store.commit('changeIsMobile',true) : this.$store.commit('changeIsMobile',false);
-    }
-  },
-  mounted() {
-    window.addEventListener("resize", this.onResize);
-    window.innerWidth < 768 ? this.$store.commit('changeIsMobile',true) : this.$store.commit('changeIsMobile',false);
-  },
-
-  beforeDestroy() {
-    window.removeEventListener("resize", this.onResize);
   },
 };
 </script>

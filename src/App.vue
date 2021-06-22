@@ -1,13 +1,16 @@
 <template>
   <Landing />
+  <utils />
 </template>
 
 <script>
 import Landing from "./components/Landing.vue";
+import utils from "./utils/utils.vue";
 export default {
   name: "App",
   components: {
     Landing,
+    utils
   },
 };
 </script>
