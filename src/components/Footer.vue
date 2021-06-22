@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="footer">
+    <div v-if="!$store.state.isMobile" class="footer">
         <button class="btn-primary">About</button>
         <button class="btn-primary">Contact Us</button>
         <button class="btn-primary">Privacy Policy</button>
