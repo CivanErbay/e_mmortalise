@@ -6,6 +6,10 @@
       alt=""
     />
     <img v-if="isMobile" class="burger-menu" src="./../assets/menu.png" alt="" />
+    <div v-else class="navigation--button-wrapper">
+        <button @click="increment" class="btn-primary">Log In</button>
+        <button class="btn-primary">Sign Up</button>
+    </div>
   </div>
 </template>
 
@@ -21,6 +25,10 @@ export default {
     onResize(event) {
       window.innerWidth < 768 ? (this.isMobile = true) : false;
     },
+   increment() {
+    this.$store.commit('increment')
+    console.log(this.$store.state.count)
+  }
   },
   mounted() {
     window.addEventListener("resize", this.onResize);
@@ -38,7 +46,7 @@ export default {
   height: 90px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 30px;
   border-bottom: 3px $primary-background-color solid;
 
@@ -51,6 +59,13 @@ export default {
     position: absolute;
     top: 19px;
     right: 27px;
+  }
+
+  &--button-wrapper {
+
+    button {
+      margin-right: 30px;
+    }
   }
 }
 </style>

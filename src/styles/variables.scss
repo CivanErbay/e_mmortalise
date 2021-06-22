@@ -114,7 +114,10 @@ $secondary-font-color: #ffffff;
 }
 
 .btn-primary {
-  height: 2rem;
-  background-image: $primary-background-color;
-  border-radius: 1rem;
+  height: 35px;
+  padding: 0 15px;
+  background-color: $primary-background-color;
+  color: $secondary-font-color;
+  border-radius: 20px;
+  box-shadow: 5px 5px 4px rgba(32, 14, 126, 1);
 }
