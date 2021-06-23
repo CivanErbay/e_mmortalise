@@ -5,7 +5,7 @@
       <input v-model="loginName" />
 
       <h5 class="login-form--text">Password</h5>
-      <input v-model="password" />
+      <input type="password" v-model="password" />
     </div>
     <button class="btn-primary">Submit</button>
     <a class="login-form--text" href="#">Forgot Password?</a>
