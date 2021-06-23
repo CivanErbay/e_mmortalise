@@ -5,7 +5,7 @@
       src="./../assets/Logo_300ppi_blau.png"
       alt=""
     />
-    <img v-if="$store.state.isMobile" class="burger-menu" src="./../assets/menu.png" alt="" />
+    <img v-if="isMobile" class="burger-menu" src="./../assets/menu.png" alt="" />
     <div v-else class="navigation--button-wrapper">
         <button class="btn-primary">Log In</button>
         <button class="btn-primary">Sign Up</button>
@@ -14,12 +14,10 @@
 </template>
 
 <script>
+import MobileCheck from "../utils/mobileCheck";
 export default {
   name: "Navigation",
-  data() {
-    return {
-    };
-  },
+  mixins: [MobileCheck]
 };
 </script>
 

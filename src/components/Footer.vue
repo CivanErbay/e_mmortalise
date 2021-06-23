@@ -1,5 +1,5 @@
 <template lang="">
-    <div v-if="!$store.state.isMobile" class="footer">
+    <div v-if="!isMobile" class="footer">
         <button class="btn-primary">About</button>
         <button class="btn-primary">Contact Us</button>
         <button class="btn-primary">Privacy Policy</button>
@@ -7,8 +7,10 @@
     </div>
 </template>
 <script>
+import MobileCheck from "../utils/mobileCheck";
 export default {
   name: "Footer",
+  mixins: [MobileCheck]
 };
 </script>
 <style lang="scss" scoped>
