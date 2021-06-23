@@ -5,19 +5,45 @@
       src="./../assets/Logo_300ppi_blau.png"
       alt=""
     />
-    <img v-if="isMobile" class="burger-menu" src="./../assets/menu.png" alt="" />
+    <img
+      v-if="isMobile"
+      class="burger-menu"
+      src="./../assets/menu.png"
+      alt=""
+    />
     <div v-else class="navigation--button-wrapper">
-        <button class="btn-primary">Log In</button>
-        <button class="btn-primary">Sign Up</button>
+      <button @click="activateLoginForm" class="btn-primary">Log In</button>
+      <button class="btn-primary">Sign Up</button>
     </div>
+    <LoginForm v-if="activeLogin" />
   </div>
 </template>
 
 <script>
 import MobileCheck from "../utils/mobileCheck";
+import BlurTrigger from "../utils/blurBackground";
+import LoginForm from "./LoginForm.vue";
+
 export default {
   name: "Navigation",
-  mixins: [MobileCheck]
+  data() {
+    return {
+      activeLogin: false,
+    };
+  },
+  methods: {
+    activateLoginForm() {
+      if (this.activeBlur && this.activeLogin) {
+        this.deactivateBlur();
+        this.activeLogin = false;
+      } else {
+        this.activateBlur();
+        this.activeLogin = true;
+      }
+    },
+  },
+  components: { LoginForm },
+  mixins: [MobileCheck, BlurTrigger],
 };
 </script>
 
@@ -43,7 +69,6 @@ export default {
   }
 
   &--button-wrapper {
-
     button {
       margin-right: 30px;
     }
