@@ -1,6 +1,6 @@
 <template>
   <Navigation/>
-  <div id="landing" @click="deactivateBlur">
+  <div id="landing" @click="closeAllModals">
     <Top />
     <MapWrapper />
     <HowTo />
@@ -20,7 +20,6 @@ export default {
   name: "Landing",
   data() {
     return {
-
     }
   },
   components: {
@@ -33,8 +32,8 @@ export default {
   mixins: [BlurTrigger],
   methods: {
     closeAllModals() {
-/*       this.deactivateBlur();
-      this.shouldClose = true; */
+        this.$store.commit('closeWindow', true)
+        this.deactivateBlur()
     }
   }
 };

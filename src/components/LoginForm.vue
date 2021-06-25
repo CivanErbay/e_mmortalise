@@ -1,5 +1,5 @@
 <template>
-  <div class="login-form">
+  <div class="login-form form">
     <div class="form-wrapper">
       <h5 class="login-form--text">Login</h5>
       <input v-model="loginName" />
@@ -31,19 +31,7 @@ export default {
 @import "../styles/variables.scss";
 
 .login-form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  background-color: white;
-  border: 3px solid $primary-background-color;
-  border-radius: 5px;
-  padding: 70px 50px 40px 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 315px;
 
   &--text {
     text-align: left;

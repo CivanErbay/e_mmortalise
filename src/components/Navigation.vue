@@ -12,10 +12,13 @@
       alt=""
     />
     <div v-else class="navigation--button-wrapper">
-      <button @click="activateLoginForm" class="btn-primary">Log In</button>
-      <button class="btn-primary">Sign Up</button>
+      <button @click="triggerForm('login')" class="btn-primary">
+        Log In
+      </button>
+      <button @click="triggerForm('register')" class="btn-primary">Sign Up</button>
     </div>
     <LoginForm v-if="activeLogin" />
+    <RegisterForm v-if="activeRegister" />
   </div>
 </template>
 
@@ -23,27 +26,45 @@
 import MobileCheck from "../utils/mobileCheck";
 import BlurTrigger from "../utils/blurBackground";
 import LoginForm from "./LoginForm.vue";
+import RegisterForm from "./RegisterForm.vue";
 
 export default {
   name: "Navigation",
   data() {
     return {
       activeLogin: false,
+      activeRegister: false,
     };
   },
   methods: {
-    activateLoginForm() {
-      if (this.activeBlur && this.activeLogin) {
+    triggerForm(form) {
+      if (this.activeLogin || this.activeRegister) {
         this.deactivateBlur();
-        this.activeLogin = false;
+        form == "login"
+          ? (this.activeLogin = false)
+          : (this.activeRegister = false);
       } else {
         this.activateBlur();
-        this.activeLogin = true;
+        form == "login"
+          ? (this.activeLogin = true)
+          : (this.activeRegister = true);
       }
     },
   },
-  components: { LoginForm },
+  components: { LoginForm, RegisterForm },
   mixins: [MobileCheck, BlurTrigger],
+  mounted() {
+    this.$store.watch(
+      (state) => state.closeAllModal,
+      (value) => {
+        if (value == true) {
+          this.activeLogin = false;
+          this.activeRegister = false;
+          this.$store.commit("closeWindow", false);
+        }
+      }
+    );
+  },
 };
 </script>
 
