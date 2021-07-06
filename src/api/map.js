@@ -1,6 +1,6 @@
 const baseURL = "http://localhost:8080";
 
-export function getMarkers() {
+/* export function getMarkers() {
   return new Promise((resolve) => {
     const markers = [
       [-3, 36.2],
@@ -11,9 +11,9 @@ export function getMarkers() {
     ];
     resolve(markers);
   });
-}
+} */
 
-export async function getMarkersCall() {
+export async function getMarkersApiCall() {
   const response = await fetch(`${baseURL}/api/v1/memories`, {
     method: "GET",
     headers: {
@@ -29,6 +29,6 @@ export async function getMarkersCall() {
 
 
 export default {
-  getMarkers,
-  getMarkersCall,
+  /* getMarkers, */
+  getMarkersApiCall,
 };
