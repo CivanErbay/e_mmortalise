@@ -4,6 +4,7 @@
 
 <script>
 import Landing from "./components/Landing.vue";
+
 export default {
   name: "App",
   components: {

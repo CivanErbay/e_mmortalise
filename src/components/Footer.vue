@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="footer">
+    <div v-if="!isMobile" class="footer">
         <button class="btn-primary">About</button>
         <button class="btn-primary">Contact Us</button>
         <button class="btn-primary">Privacy Policy</button>
@@ -7,27 +7,29 @@
     </div>
 </template>
 <script>
+import MobileCheck from "../utils/mobileCheck";
 export default {
   name: "Footer",
+  mixins: [MobileCheck]
 };
 </script>
 <style lang="scss" scoped>
 @import "../styles/variables.scss";
 
 .footer {
-  height: 3rem;
+  height: 80px;
+  padding: 30px 60px;
   display: flex;
   justify-content: flex-end;
   align-content: center;
   align-items: center;
 
   button {
-    padding: 0 1rem;
     color: $secondary-font-color;
     background-color: $primary-background-color;
 
     &:not(:first-child) {
-      margin-left: 1rem;
+      margin-left: 30px;
     }
   }
 }
