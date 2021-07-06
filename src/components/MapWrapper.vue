@@ -25,10 +25,10 @@ export default {
   mounted() {
     
     mapboxgl.accessToken =
-      "pk.eyJ1Ijoia2lrb211cm8iLCJhIjoiY2twd3gzMWR3MDBmeTJwcWNuNTcyOHh3NiJ9.l5ICX_-sizKBmCIpIbqryg";
+      "pk.eyJ1IjoiYWxpYW5hY29uZGEiLCJhIjoiY2tucHh0aHF0MW5qcDJucHIyeW1ub2Q2MyJ9.lFmj8JXfO-0usB2mTTGMdw";
     const map = new mapboxgl.Map({
       container: "Mapbox",
-      style: "mapbox://styles/kikomuro/ckpwxbohi2bfa18q6zoeedvlo",
+      style: "mapbox://styles/alianaconda/cknpxulrh0qfq18jspj506pzx",
       center: [-3, 36], // starting position [lng, lat]
       zoom: 6, // starting zoom
     });
