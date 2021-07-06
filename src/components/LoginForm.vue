@@ -7,7 +7,7 @@
       <h5 class="login-form--text">Password</h5>
       <input type="password" v-model="password" />
     </div>
-    <button class="btn-primary">Submit</button>
+    <button @click="performLogin" class="btn-primary">Submit</button>
     <a class="login-form--text" href="#">Forgot Password?</a>
 
     <div class="login-form--bottom">
@@ -25,6 +25,11 @@ export default {
       password: "",
     };
   },
+  methods: {
+    performLogin() {
+      this.$store.commit('authenticate', true)
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

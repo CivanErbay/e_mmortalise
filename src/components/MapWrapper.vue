@@ -23,6 +23,7 @@ export default {
     };
   },
   mounted() {
+    
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYWxpYW5hY29uZGEiLCJhIjoiY2tucHh0aHF0MW5qcDJucHIyeW1ub2Q2MyJ9.lFmj8JXfO-0usB2mTTGMdw";
     const map = new mapboxgl.Map({
@@ -35,8 +36,18 @@ export default {
     this.getMarkers();
   },
   methods: {
+   /*  getMarkers() {
+      mapApi.getMarkers().then((markers) => {
+        this.markers = markers;
+      });
+    }, */
     getMarkers() {
-      mapApi.getMarkers().then((markers) => (this.markers = markers));
+      mapApi.getMarkersApiCall().then((response) => {
+        const markerArray = response.map((val) => {
+          return val.position;
+        });
+        this.markers = markerArray;
+      });
     },
   },
   watch: {

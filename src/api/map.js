@@ -1,4 +1,6 @@
-export function getMarkers() {
+const baseURL = "http://localhost:8080";
+
+/* export function getMarkers() {
   return new Promise((resolve) => {
     const markers = [
       [-3, 36.2],
@@ -9,8 +11,24 @@ export function getMarkers() {
     ];
     resolve(markers);
   });
+} */
+
+export async function getMarkersApiCall() {
+  const response = await fetch(`${baseURL}/api/v1/memories`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.status !== 200) {
+    throw new Error("something went wrong!!!");
+  }
+  return await response.json();
 }
 
+
+
 export default {
-  getMarkers,
+  /* getMarkers, */
+  getMarkersApiCall,
 };
