@@ -64,13 +64,28 @@
       <input class="input-100" v-model="firstName" />
 
       <h5 class="register-form--text">Last Name of your loved one*</h5>
-      <input class="input-100" type="password" v-model="lastName" />
-      
+      <input class="input-100" v-model="lastName" />
+
       <h5 class="register-form--text">Hometown*</h5>
-      <input class="input-100" type="password" v-model="lastName" />
-      
+      <input class="input-100" v-model="hometown" />
+
       <h5 class="register-form--text">Country*</h5>
-      <input class="input-100" type="password" v-model="lastName" />
+      <input class="input-100" v-model="country" />
+    </div>
+
+    <div class="date-wrapper">
+      <h5 class="register-form--text">Date of Birth</h5>
+      <div class="birth-wrapper">
+        <input class="input-30" placeholder="DD" v-model="country" /> /
+        <input class="input-30" placeholder="MM" v-model="country" /> /
+        <input class="input-30" placeholder="YY" v-model="country" /> 
+      </div> 
+      <h5 class="register-form--text">Date of Passing or Missing</h5>
+      <div class="passing-wrapper">
+        <input class="input-30" placeholder="DD" v-model="country" /> /
+        <input class="input-30" placeholder="MM" v-model="country" /> /
+        <input class="input-30" placeholder="YY" v-model="country" /> 
+      </div>
     </div>
 
     <p class="register-form--text">All fields with * are required</p>
@@ -86,6 +101,8 @@ export default {
       checkedInput: [],
       firstName: "",
       lastName: "",
+      hometown: "",
+      country: "",
     };
   },
 };
@@ -122,6 +139,22 @@ export default {
     }
   }
 
+  .date-wrapper {
+      width: 100%;
+  }
+
+  .birth-wrapper,
+  .passing-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    input {
+        text-align: center;
+    }
+  }
+
   &--text {
     text-align: left;
     font-size: 12px;
@@ -129,6 +162,7 @@ export default {
     font-family: "FontLight";
     text-decoration: none;
     color: $primary-background-color;
+    width: 100%;
   }
 
   .input-100 {
@@ -137,6 +171,13 @@ export default {
     width: 313px;
     outline: none;
     border: 1px solid $primary-background-color;
+  }
+
+  .input-30 {
+    width: 75px;
+    outline: none;
+    border: 1px solid $primary-background-color;
+    padding: 5px 0;
   }
 }
 </style>
