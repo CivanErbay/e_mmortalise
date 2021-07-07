@@ -1,99 +1,109 @@
 <template>
   <div class="register-form form">
-    <div class="form-wrapper">
-      <h4>Create a place</h4>
-      <h5 class="subheadline">What is your relationship?*</h5>
-      <div class="checkbox-wrapper">
-        <div class="checkbox">
-          <input
-            type="checkbox"
-            id="mother"
-            value="mother"
-            v-model="checkedInput"
-          />
-          <label for="jack">Mother</label>
+    <div class="first-step" v-show="step == 1">
+      <div class="form-wrapper">
+        <h4>Create a place</h4>
+        <h5 class="subheadline">What is your relationship?*</h5>
+        <div class="checkbox-wrapper">
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="mother"
+              value="mother"
+              v-model="checkedInput"
+            />
+            <label for="jack">Mother</label>
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="sister"
+              value="sister"
+              v-model="checkedInput"
+            />
+            <label for="john">Sister</label>
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="father"
+              value="father"
+              v-model="checkedInput"
+            />
+            <label for="john">Father</label>
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="friend"
+              value="friend"
+              v-model="checkedInput"
+            />
+            <label for="mike">Brother</label>
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="friend"
+              value="friend"
+              v-model="checkedInput"
+            />
+            <label for="mike">Relative</label>
+          </div>
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="friend"
+              value="friend"
+              v-model="checkedInput"
+            />
+            <label for="mike">Other</label>
+          </div>
         </div>
-        <div class="checkbox">
-          <input
-            type="checkbox"
-            id="sister"
-            value="sister"
-            v-model="checkedInput"
-          />
-          <label for="john">Sister</label>
+
+        <h5 class="register-form--text">First Name of your loved one*</h5>
+        <input class="input-100" v-model="firstName" />
+
+        <h5 class="register-form--text">Last Name of your loved one*</h5>
+        <input class="input-100" v-model="lastName" />
+
+        <h5 class="register-form--text">Hometown*</h5>
+        <input class="input-100" v-model="hometown" />
+
+        <h5 class="register-form--text">Country*</h5>
+        <input class="input-100" v-model="country" />
+      </div>
+
+      <div class="date-wrapper">
+        <h5 class="register-form--text">Date of Birth</h5>
+        <div class="birth-wrapper">
+          <input class="input-30" placeholder="DD" v-model="country" /> /
+          <input class="input-30" placeholder="MM" v-model="country" /> /
+          <input class="input-30" placeholder="YY" v-model="country" />
         </div>
-        <div class="checkbox">
-          <input
-            type="checkbox"
-            id="father"
-            value="father"
-            v-model="checkedInput"
-          />
-          <label for="john">Father</label>
-        </div>
-        <div class="checkbox">
-          <input
-            type="checkbox"
-            id="friend"
-            value="friend"
-            v-model="checkedInput"
-          />
-          <label for="mike">Brother</label>
-        </div>
-        <div class="checkbox">
-          <input
-            type="checkbox"
-            id="friend"
-            value="friend"
-            v-model="checkedInput"
-          />
-          <label for="mike">Relative</label>
-        </div>
-        <div class="checkbox">
-          <input
-            type="checkbox"
-            id="friend"
-            value="friend"
-            v-model="checkedInput"
-          />
-          <label for="mike">Other</label>
+        <h5 class="register-form--text">Date of Passing or Missing</h5>
+        <div class="passing-wrapper">
+          <input class="input-30" placeholder="DD" v-model="country" /> /
+          <input class="input-30" placeholder="MM" v-model="country" /> /
+          <input class="input-30" placeholder="YY" v-model="country" />
         </div>
       </div>
 
-      <h5 class="register-form--text">First Name of your loved one*</h5>
-      <input class="input-100" v-model="firstName" />
-
-      <h5 class="register-form--text">Last Name of your loved one*</h5>
-      <input class="input-100" v-model="lastName" />
-
-      <h5 class="register-form--text">Hometown*</h5>
-      <input class="input-100" v-model="hometown" />
-
-      <h5 class="register-form--text">Country*</h5>
-      <input class="input-100" v-model="country" />
+      <p class="register-form--text">All fields with * are required</p>
+      <button class="btn-primary" @click="step++">Next</button>
     </div>
 
-    <div class="date-wrapper">
-      <h5 class="register-form--text">Date of Birth</h5>
-      <div class="birth-wrapper">
-        <input class="input-30" placeholder="DD" v-model="country" /> /
-        <input class="input-30" placeholder="MM" v-model="country" /> /
-        <input class="input-30" placeholder="YY" v-model="country" /> 
-      </div> 
-      <h5 class="register-form--text">Date of Passing or Missing</h5>
-      <div class="passing-wrapper">
-        <input class="input-30" placeholder="DD" v-model="country" /> /
-        <input class="input-30" placeholder="MM" v-model="country" /> /
-        <input class="input-30" placeholder="YY" v-model="country" /> 
-      </div>
+    <div class="second-step" v-show="step == 2">
+      <div id="Mapbox2"></div>
+      <button class="btn-primary" @click="step++">Next</button>
     </div>
-
-    <p class="register-form--text">All fields with * are required</p>
-    <button class="btn-primary">Next</button>
   </div>
 </template>
 
 <script>
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from "mapbox-gl";
+
 export default {
   name: "MemoryForm",
   data() {
@@ -103,7 +113,26 @@ export default {
       lastName: "",
       hometown: "",
       country: "",
+      marker: null,
+      step: 1,
     };
+  },
+  watch: {
+    step(step) {
+      if (step === 2) this.setupMap();
+    },
+  },
+  methods: {
+    setupMap() {
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiYWxpYW5hY29uZGEiLCJhIjoiY2tucHh0aHF0MW5qcDJucHIyeW1ub2Q2MyJ9.lFmj8JXfO-0usB2mTTGMdw";
+      const map = new mapboxgl.Map({
+        container: "Mapbox2",
+        style: "mapbox://styles/alianaconda/cknpxulrh0qfq18jspj506pzx",
+        center: [20, 40], // starting position [lng, lat]
+        zoom: 2, // starting zoom
+      });
+    },
   },
 };
 </script>
@@ -113,6 +142,7 @@ export default {
 
 .register-form {
   width: 315px;
+  min-height: 500px;
 
   .form-wrapper {
     display: flex;
@@ -140,7 +170,7 @@ export default {
   }
 
   .date-wrapper {
-      width: 100%;
+    width: 100%;
   }
 
   .birth-wrapper,
@@ -151,7 +181,7 @@ export default {
     margin-bottom: 15px;
 
     input {
-        text-align: center;
+      text-align: center;
     }
   }
 
@@ -178,6 +208,27 @@ export default {
     outline: none;
     border: 1px solid $primary-background-color;
     padding: 5px 0;
+  }
+
+  .second-step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    overflow: hidden;
+    #Mapbox2 {
+      margin: auto;
+      transform: scale(1.75);
+      width: 100%;
+      height: 400px;
+      margin-bottom: 1rem;
+
+      .mapboxgl-canvas {
+        position: absolute;
+        top: 100px;
+      }
+    }
   }
 }
 </style>

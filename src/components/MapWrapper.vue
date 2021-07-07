@@ -1,7 +1,7 @@
 <template lang="">
   <div class="map-wrapper">
     <div class="header"><span class="title">Map of Souls</span></div>
-    <div id="Mapbox"></div>
+    <div id="Mapbox1"></div>
 
     <div class="inner-wrapper">
       <img class="mouse-icon" src="./../assets/mouse.png" alt="" />
@@ -23,11 +23,10 @@ export default {
     };
   },
   mounted() {
-    
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYWxpYW5hY29uZGEiLCJhIjoiY2tucHh0aHF0MW5qcDJucHIyeW1ub2Q2MyJ9.lFmj8JXfO-0usB2mTTGMdw";
     const map = new mapboxgl.Map({
-      container: "Mapbox",
+      container: "Mapbox1",
       style: "mapbox://styles/alianaconda/cknpxulrh0qfq18jspj506pzx",
       center: [-3, 36], // starting position [lng, lat]
       zoom: 6, // starting zoom
@@ -36,7 +35,7 @@ export default {
     this.getMarkers();
   },
   methods: {
-   /*  getMarkers() {
+    /*  getMarkers() {
       mapApi.getMarkers().then((markers) => {
         this.markers = markers;
       });
@@ -101,7 +100,7 @@ export default {
     }
   }
 
-  #Mapbox {
+  #Mapbox1 {
     margin: auto;
     width: 90%;
     height: 500px;
