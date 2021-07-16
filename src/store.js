@@ -1,18 +1,18 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 export const store = createStore({
   state() {
     return {
-      closeAllModal: false,
+      currentModal: null,
       isAuthenticated: false,
     };
   },
   mutations: {
-    closeWindow(state, payload) {
-      state.closeAllModal = payload;
+    setModal(state, payload) {
+      state.currentModal = payload;
     },
     authenticate(state, payload) {
       state.isAuthenticated = payload;
-    }
+    },
   },
 });

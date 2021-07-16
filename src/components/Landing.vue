@@ -1,6 +1,7 @@
 <template>
-  <Navigation/>
-  <div id="landing" @click="closeAllModals">
+  <Navigation />
+  <div id="landing">
+    <ModalWrapper />
     <Top />
     <MapWrapper />
     <HowTo />
@@ -14,28 +15,21 @@ import Top from "./Top.vue";
 import MapWrapper from "./MapWrapper.vue";
 import HowTo from "./HowTo.vue";
 import Footer from "./Footer.vue";
-import BlurTrigger from "../utils/blurBackground";
+import ModalWrapper from "./ModalWrapper.vue";
 
 export default {
   name: "Landing",
   data() {
-    return {
-    }
+    return {};
   },
   components: {
     Navigation,
+    ModalWrapper,
     Top,
     MapWrapper,
     HowTo,
     Footer,
   },
-  mixins: [BlurTrigger],
-  methods: {
-    closeAllModals() {
-        this.$store.commit('closeWindow', true)
-        this.deactivateBlur()
-    }
-  }
 };
 </script>
 

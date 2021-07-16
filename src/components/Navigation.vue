@@ -15,33 +15,28 @@
       v-else-if="!isMobile && !isAuthenticated"
       class="navigation--button-wrapper"
     >
-      <button @click="triggerForm('login')" class="btn-primary">Log In</button>
-      <button @click="triggerForm('register')" class="btn-primary">
+      <button @click="triggerForm(modalNamespace.LOGIN)" class="btn-primary">
+        Log In
+      </button>
+      <button @click="triggerForm(modalNamespace.REGISTER)" class="btn-primary">
         Sign Up
       </button>
-    </div>  
+    </div>
     <div
       v-else-if="!isMobile && isAuthenticated"
       class="navigation--button-wrapper"
     >
-      <button @click="triggerForm('newMemory')" class="btn-primary">Create Memory</button>
-      <button @click="triggerForm('logout')" class="btn-primary">
-        Logout
+      <button @click="triggerForm(modalNamespace.FORM_1)" class="btn-primary">
+        Create Memory
       </button>
+      <button @click="triggerForm('logout')" class="btn-primary">Logout</button>
     </div>
-
-    <LoginForm v-if="activeLogin" />
-    <RegisterForm v-if="activeRegister" />
-    <MemoryForm v-if="activeCreateMemory" />
   </div>
 </template>
 
 <script>
 import MobileCheck from "../utils/mobileCheck";
-import BlurTrigger from "../utils/blurBackground";
-import LoginForm from "./LoginForm.vue";
-import RegisterForm from "./RegisterForm.vue";
-import MemoryForm from "./MemoryForm.vue";
+import { modalNamespace } from "./../constants";
 
 export default {
   name: "Navigation",
@@ -49,31 +44,35 @@ export default {
     return {
       activeLogin: false,
       activeRegister: false,
-      isAuthenticated: false,
-      activeCreateMemory: false
+      activeCreateMemory: false,
+      modalNamespace,
     };
   },
-  components: { LoginForm, RegisterForm, MemoryForm },
-  mixins: [MobileCheck, BlurTrigger],
+  mixins: [MobileCheck],
+  computed: {
+    isAuthenticated() {
+      return this.$store.state.isAuthenticated;
+    },
+  },
   methods: {
     triggerForm(form) {
-      if (this.activeLogin || this.activeRegister) {
-        this.deactivateBlur();
-        form == "login"
-          ? (this.activeLogin = false)
-          : (this.activeRegister = false);
-      } else if (!this.isAuthenticated) {
-        this.activateBlur();
-        form == "login"
-          ? (this.activeLogin = true)
-          : (this.activeRegister = true);
-      } else if (this.isAuthenticated && form == 'logout') {
-         this.$store.commit('authenticate', false)
-      } else if (this.isAuthenticated && form == 'newMemory') {
-        this.activateBlur();
-        this.activeCreateMemory = true;
-      }
-
+      this.$store.commit("setModal", form);
+      //   if (this.activeLogin || this.activeRegister) {
+      //     this.deactivateBlur();
+      //     form == "login"
+      //       ? (this.activeLogin = false)
+      //       : (this.activeRegister = false);
+      //   } else if (!this.isAuthenticated) {
+      //     this.activateBlur();
+      //     form == "login"
+      //       ? (this.activeLogin = true)
+      //       : (this.activeRegister = true);
+      //   } else if (this.isAuthenticated && form == "logout") {
+      //     this.$store.commit("authenticate", false);
+      //   } else if (this.isAuthenticated && form == "newMemory") {
+      //     this.activateBlur();
+      //     this.activeCreateMemory = true;
+      //   }
     },
   },
   mounted() {
@@ -91,14 +90,10 @@ export default {
     this.$store.watch(
       (state) => state.isAuthenticated,
       (value) => {
-        if (value == true) {
-          this.isAuthenticated = true;
+        if (value) {
           this.deactivateBlur();
           this.activeRegister = false;
           this.activeLogin = false;
-        }
-        else {
-           this.isAuthenticated = false;
         }
       }
     );
