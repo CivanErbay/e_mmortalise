@@ -57,43 +57,16 @@ export default {
   methods: {
     triggerForm(form) {
       this.$store.commit("setModal", form);
-      //   if (this.activeLogin || this.activeRegister) {
-      //     this.deactivateBlur();
-      //     form == "login"
-      //       ? (this.activeLogin = false)
-      //       : (this.activeRegister = false);
-      //   } else if (!this.isAuthenticated) {
-      //     this.activateBlur();
-      //     form == "login"
-      //       ? (this.activeLogin = true)
-      //       : (this.activeRegister = true);
-      //   } else if (this.isAuthenticated && form == "logout") {
-      //     this.$store.commit("authenticate", false);
-      //   } else if (this.isAuthenticated && form == "newMemory") {
-      //     this.activateBlur();
-      //     this.activeCreateMemory = true;
-      //   }
     },
   },
   mounted() {
     this.$store.watch(
-      (state) => state.closeAllModal,
-      (value) => {
-        if (value == true) {
-          this.activeLogin = false;
-          this.activeRegister = false;
-          this.activeCreateMemory = false;
-          this.$store.commit("closeWindow", false);
-        }
-      }
-    );
-    this.$store.watch(
       (state) => state.isAuthenticated,
       (value) => {
         if (value) {
-          this.deactivateBlur();
           this.activeRegister = false;
           this.activeLogin = false;
+          this.$store.commit("setModal", null);
         }
       }
     );
