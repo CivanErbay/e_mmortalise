@@ -94,7 +94,10 @@
     </div>
 
     <div class="second-step" v-show="step == 2">
+      <span>Choose a place</span>
+      <span>Double click to choose a place</span>
       <div id="Mapbox2"></div>
+      <span>Undo</span>
       <button class="btn-primary" @click="step++">Next</button>
     </div>
   </div>
