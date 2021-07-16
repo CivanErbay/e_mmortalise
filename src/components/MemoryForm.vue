@@ -100,6 +100,17 @@
       <span>Undo</span>
       <button class="btn-primary" @click="step++">Next</button>
     </div>
+
+    <div class="third-step" v-show="step == 3">
+      <div class="image-upload">
+          <form method="post" enctype="multipart/form-data" action="/api/v1/memories/uploadImage">
+            <input type="file" name="imageFile">
+            <input type="submit" value="Upload">
+          </form>
+
+      </div>
+      <button class="btn-primary" @click="">Submit</button>
+    </div>
   </div>
 </template>
 
@@ -171,7 +182,15 @@ export default {
       }
     }
   }
+  .first-step {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+  }
 
+  .btn-primary {
+    z-index: 1;
+  }
   .date-wrapper {
     width: 100%;
   }

@@ -48,5 +48,6 @@ export default {
   height: 100vh;
   width: 100vw;
   z-index: 1;
+  top: 0;
 }
 </style>

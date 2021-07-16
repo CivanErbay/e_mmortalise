@@ -6,11 +6,23 @@
       alt=""
     />
     <img
-      v-if="isMobile"
+      v-if="isMobile && !triggerMobileMenu"
       class="burger-menu"
-      src="./../assets/menu.png"
+      src="./../assets/menu.svg"
       alt=""
+      @click="handleMobileMenu"
     />
+    <div
+      v-else-if="isMobile && triggerMobileMenu && !isAuthenticated"
+      class="navigation--button-wrapper"
+    >
+      <button @click="triggerForm(modalNamespace.LOGIN)" class="btn-primary">
+        Log In
+      </button>
+      <button @click="triggerForm(modalNamespace.REGISTER)" class="btn-primary">
+        Sign Up
+      </button>
+    </div>
     <div
       v-else-if="!isMobile && !isAuthenticated"
       class="navigation--button-wrapper"
@@ -22,6 +34,7 @@
         Sign Up
       </button>
     </div>
+
     <div
       v-else-if="!isMobile && isAuthenticated"
       class="navigation--button-wrapper"
@@ -29,7 +42,7 @@
       <button @click="triggerForm(modalNamespace.FORM_1)" class="btn-primary">
         Create Memory
       </button>
-      <button @click="triggerForm('logout')" class="btn-primary">Logout</button>
+      <button @click="handleLogout" class="btn-primary">Logout</button>
     </div>
   </div>
 </template>
@@ -45,6 +58,7 @@ export default {
       activeLogin: false,
       activeRegister: false,
       activeCreateMemory: false,
+      triggerMobileMenu: false,
       modalNamespace,
     };
   },
@@ -58,6 +72,13 @@ export default {
     triggerForm(form) {
       this.$store.commit("setModal", form);
     },
+    handleLogout() {
+      this.$store.commit("authenticate", false);
+    },
+    handleMobileMenu() {
+      this.$store.commit("setModal", blur);
+      this.triggerMobileMenu = true;
+    }
   },
   mounted() {
     this.$store.watch(
@@ -89,10 +110,10 @@ export default {
   }
 
   .burger-menu {
-    height: 25px;
+    height: 40px;
     position: absolute;
-    top: 19px;
-    right: 27px;
+    top: 22px;
+    right: 25px;
   }
 
   &--button-wrapper {
