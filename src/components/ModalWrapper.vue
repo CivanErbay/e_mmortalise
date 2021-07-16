@@ -1,5 +1,5 @@
 <template>
-  <div id="modalBackground" v-show="currentModal" @click="closeAllModals"></div>
+  <div id="modalBackground" v-if="currentModal" @click="closeAllModals"></div>
   <template v-if="!isAuthenticated">
     <LoginForm v-if="currentModal === modalNamespace.LOGIN" />
     <RegisterForm v-if="currentModal === modalNamespace.REGISTER" />
