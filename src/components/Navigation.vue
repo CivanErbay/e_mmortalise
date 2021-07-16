@@ -56,7 +56,9 @@ export default {
   },
   methods: {
     triggerForm(form) {
-      this.$store.commit("setModal", form);
+      form == "logout"
+        ? this.$store.commit("authenticate", false)
+        : this.$store.commit("setModal", form);
     },
   },
   mounted() {
