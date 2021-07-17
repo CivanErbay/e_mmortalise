@@ -1,7 +1,7 @@
 // import { baseURL } from "../constants";
 import { markers } from "../mock/markers";
 
-export async function getAllMarkers() {
+async function getAllMarkers() {
   // mock
   return new Promise((resolve) => {
     resolve(markers);
@@ -19,7 +19,7 @@ export async function getAllMarkers() {
   // return await response.json();
 }
 
-export async function getMarkerById(id) {
+async function getMarkerById(id) {
   // mock
   return new Promise((resolve, reject) => {
     const marker = markers.find((marker) => marker.marker_id === id);
@@ -28,10 +28,16 @@ export async function getMarkerById(id) {
   });
 }
 
-export async function getUserMarkers(user_id) {
+async function getUserMarkers(user_id) {
   // mock
   return new Promise((resolve, reject) => {
     const userMarkers = markers.filter((marker) => marker.user_id === user_id);
     resolve(userMarkers);
   });
 }
+
+export default {
+  getAllMarkers,
+  getMarkerById,
+  getUserMarkers,
+};
