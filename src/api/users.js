@@ -10,7 +10,7 @@ async function getAllUsers() {
 async function getUserById(id) {
   return new Promise((resolve, reject) => {
     const user = users.find((user) => user.user_id === id);
-    if (typeof user === "undefined") resolve(user);
+    if (typeof user !== "undefined") resolve(user);
     else reject("No user found with ID: " + id);
   });
 }

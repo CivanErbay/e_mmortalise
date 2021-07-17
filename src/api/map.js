@@ -23,7 +23,7 @@ async function getMarkerById(id) {
   // mock
   return new Promise((resolve, reject) => {
     const marker = markers.find((marker) => marker.marker_id === id);
-    if (typeof marker === "undefined") resolve(marker);
+    if (typeof marker !== "undefined") resolve(marker);
     else reject("No marker found with ID: " + id);
   });
 }
