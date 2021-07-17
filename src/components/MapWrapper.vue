@@ -41,7 +41,7 @@ export default {
       });
     }, */
     getMarkers() {
-      mapApi.getMarkersApiCall().then((response) => {
+      mapApi.getAllMarkers().then((response) => {
         const markerArray = response.map((val) => {
           return val.position;
         });

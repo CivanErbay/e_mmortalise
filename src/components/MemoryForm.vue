@@ -103,13 +103,16 @@
 
     <div class="third-step" v-show="step == 3">
       <div class="image-upload">
-          <form method="post" enctype="multipart/form-data" action="/api/v1/memories/uploadImage">
-            <input type="file" name="imageFile">
-            <input type="submit" value="Upload">
-          </form>
-
+        <form
+          method="post"
+          enctype="multipart/form-data"
+          action="/api/v1/memories/uploadImage"
+        >
+          <input type="file" name="imageFile" />
+          <input type="submit" value="Upload" />
+        </form>
       </div>
-      <button class="btn-primary" @click="">Submit</button>
+      <button class="btn-primary" @click="TODO">Submit</button>
     </div>
   </div>
 </template>
@@ -183,9 +186,9 @@ export default {
     }
   }
   .first-step {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .btn-primary {
