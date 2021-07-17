@@ -13,6 +13,7 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import mapApi from "../api/map.js";
+import { mapboxStyle } from "../constants.js";
 
 export default {
   name: "MapWrapper",
@@ -27,7 +28,7 @@ export default {
       "pk.eyJ1IjoiYWxpYW5hY29uZGEiLCJhIjoiY2tucHh0aHF0MW5qcDJucHIyeW1ub2Q2MyJ9.lFmj8JXfO-0usB2mTTGMdw";
     const map = new mapboxgl.Map({
       container: "Mapbox1",
-      style: "mapbox://styles/alianaconda/cknpxulrh0qfq18jspj506pzx",
+      style: mapboxStyle,
       center: [-3, 36], // starting position [lng, lat]
       zoom: 6, // starting zoom
     });
