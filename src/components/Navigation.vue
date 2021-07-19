@@ -105,6 +105,10 @@ export default {
   padding: 0 30px;
   border-bottom: 3px $primary-background-color solid;
 
+  &--button-wrapper {
+    z-index: 2;
+  }
+
   &--headline {
     height: 30px;
   }
