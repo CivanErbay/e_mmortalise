@@ -1,13 +1,12 @@
 // import { baseURL } from "../constants";
-import { users } from "../mock/users";
 
 async function getAllUsers() {
-  return Promise.resolve(resolve(users));
+  return Promise.resolve(getLocalUsers());
 }
 
 async function getUserById(id) {
   return new Promise((resolve, reject) => {
-    const user = users.find((user) => user.user_id === id);
+    const user = getLocalUsers().find((user) => user.user_id === id);
     if (typeof user !== "undefined") resolve(user);
     else reject("No user found with ID: " + id);
   });
@@ -15,9 +14,10 @@ async function getUserById(id) {
 
 async function performLogin(email, password) {
   return new Promise((resolve, reject) => {
-    const user = users.find((user) => user.email === email);
+    const user = getLocalUsers().find((user) => user.email === email);
+
     // no password check
-    if (typeof user !== "undefined") resolve(user);
+    if (user) resolve(user);
     else reject("No user found with email: " + email);
   });
 }
@@ -28,15 +28,29 @@ async function performRegister(userData) {
 
     // TODO validation checks (minimun characters, valid email format, strong password...)
     if (firstName && lastName && email && password) {
-      const userAlreadyRegistered = users.find((user) => user.email === email);
+      const localUsers = getLocalUsers() || [];
+      const userAlreadyRegistered = localUsers.find((user) => user.email === email);
+
       if (userAlreadyRegistered) reject("This email already has an account: " + email);
       else {
-        const newUserModel = { ...userData, user_id: users.length, markers: [] };
-        users.push(newUserModel);
+        const user_id = localUsers.length;
+        const newUserModel = { ...userData, user_id, markers: [] };
+        // save to local storage
+        setLocalUsers([...localUsers, newUserModel]);
         resolve(newUserModel);
       }
     }
   });
+}
+
+// returns an array
+function getLocalUsers() {
+  return JSON.parse(localStorage.getItem("users"));
+}
+
+// takes an array
+function setLocalUsers(users) {
+  localStorage.setItem("users", JSON.stringify(users));
 }
 
 export default {
