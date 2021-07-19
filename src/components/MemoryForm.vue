@@ -89,19 +89,12 @@
     </div>
 
     <p class="register-form--text">All fields with * are required</p>
-    <button
-      class="btn-primary"
-      @click="$store.commit('setModal', modalNamespace.MAP_FORM)"
-    >
-      Next
-    </button>
+    <button class="btn-primary" @click="handleNext">Next</button>
   </div>
 </template>
 
 <script>
-import "mapbox-gl/dist/mapbox-gl.css";
-import mapboxgl from "mapbox-gl";
-import { mapboxStyle, modalNamespace } from "../constants";
+import { modalNamespace } from "../constants";
 
 export default {
   name: "MemoryForm",
@@ -112,99 +105,25 @@ export default {
       lastName: "",
       hometown: "",
       country: "",
-      marker: null,
-      modalNamespace,
     };
   },
+  mounted() {
+    this.$store.commit("newMemory");
+  },
   methods: {
-    setupMap() {
-      mapboxgl.accessToken =
-        "pk.eyJ1IjoiYWxpYW5hY29uZGEiLCJhIjoiY2tucHh0aHF0MW5qcDJucHIyeW1ub2Q2MyJ9.lFmj8JXfO-0usB2mTTGMdw";
-      const map = new mapboxgl.Map({
-        container: "Mapbox2",
-        style: mapboxStyle,
-        center: [20, 40], // starting position [lng, lat]
-        zoom: 2, // starting zoom
+    handleNext() {
+      this.$store.commit("editMemory", {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        hometown: this.hometown,
+        country: this.country,
       });
+      this.$store.commit("setModal", modalNamespace.MAP_FORM);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/variables.scss";
-
-.register-form {
-  width: 315px;
-  min-height: 500px;
-
-  .form-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-
-    .subheadline {
-      margin: 0 0 15px 0;
-    }
-
-    input {
-      padding: 10px 0;
-    }
-
-    .checkbox {
-      display: inline-block;
-      padding: 10px 15px 10px 0;
-
-      &-wrapper {
-        text-align: left;
-        margin-bottom: 15px;
-      }
-    }
-  }
-
-  .btn-primary {
-    z-index: 1;
-  }
-  .date-wrapper {
-    width: 100%;
-  }
-
-  .birth-wrapper,
-  .passing-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-
-    input {
-      text-align: center;
-    }
-  }
-
-  &--text {
-    text-align: left;
-    font-size: 12px;
-    margin: 0 0 3px 0;
-    font-family: "FontLight";
-    text-decoration: none;
-    color: $primary-background-color;
-    width: 100%;
-  }
-
-  .input-100 {
-    margin-bottom: 15px;
-    padding: 5px 0;
-    width: 313px;
-    outline: none;
-    border: 1px solid $primary-background-color;
-  }
-
-  .input-30 {
-    width: 75px;
-    outline: none;
-    border: 1px solid $primary-background-color;
-    padding: 5px 0;
-  }
-}
+@import "../styles/form.scss";
 </style>

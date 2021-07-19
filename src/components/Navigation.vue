@@ -99,9 +99,13 @@ export default {
   padding: 0 30px;
   border-bottom: 3px $primary-background-color solid;
 
-  &--button-wrapper {
-    z-index: 2;
-  }
+  // TODO only for mobile
+  // &--button-wrapper {
+  //   z-index: 2;
+  //   @include breakpoint(small) {
+  //     z-index: 1;
+  //   }
+  // }
 
   &--headline {
     height: 30px;

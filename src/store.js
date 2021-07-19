@@ -6,6 +6,7 @@ export const store = createStore({
       currentModal: null,
       isAuthenticated: false,
       userModel: null,
+      creatingMemory: {},
     };
   },
   mutations: {
@@ -17,6 +18,12 @@ export const store = createStore({
     },
     setUserModel(state, payload) {
       state.userModel = payload;
+    },
+    editMemory(state, payload) {
+      state.creatingMemory = { ...state.creatingMemory, ...payload };
+    },
+    newMemory(state) {
+      state.creatingMemory = {};
     },
   },
 });

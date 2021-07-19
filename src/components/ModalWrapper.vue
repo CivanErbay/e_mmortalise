@@ -6,7 +6,7 @@
   </template>
   <template v-if="isAuthenticated">
     <MemoryForm v-if="currentModal === modalNamespace.MEMORY_FORM" />
-    <MemoryForm v-if="currentModal === modalNamespace.MAP_FORM" />
+    <MapForm v-if="currentModal === modalNamespace.MAP_FORM" />
   </template>
 </template>
 

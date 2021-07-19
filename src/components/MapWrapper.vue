@@ -13,7 +13,7 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import mapApi from "../api/map.js";
-import { mapboxStyle } from "../constants.js";
+import { mapboxStyle, mapboxToken } from "../constants.js";
 
 export default {
   name: "MapWrapper",
@@ -24,8 +24,7 @@ export default {
     };
   },
   mounted() {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoiYWxpYW5hY29uZGEiLCJhIjoiY2tucHh0aHF0MW5qcDJucHIyeW1ub2Q2MyJ9.lFmj8JXfO-0usB2mTTGMdw";
+    mapboxgl.accessToken = mapboxToken;
     const map = new mapboxgl.Map({
       container: "Mapbox1",
       style: mapboxStyle,
