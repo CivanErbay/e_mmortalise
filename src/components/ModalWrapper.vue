@@ -5,8 +5,8 @@
     <RegisterForm v-if="currentModal === modalNamespace.REGISTER" />
   </template>
   <template v-if="isAuthenticated">
-    <MemoryForm v-if="currentModal === modalNamespace.FORM_1" />
-    <!-- LOgout -->
+    <MemoryForm v-if="currentModal === modalNamespace.MEMORY_FORM" />
+    <MemoryForm v-if="currentModal === modalNamespace.MAP_FORM" />
   </template>
 </template>
 
@@ -15,6 +15,7 @@ import { modalNamespace } from "./../constants";
 import LoginForm from "./LoginForm.vue";
 import RegisterForm from "./RegisterForm.vue";
 import MemoryForm from "./MemoryForm.vue";
+import MapForm from "./MapForm.vue";
 
 export default {
   name: "ModalWrapper",
@@ -23,7 +24,7 @@ export default {
       modalNamespace,
     };
   },
-  components: { LoginForm, RegisterForm, MemoryForm },
+  components: { LoginForm, RegisterForm, MemoryForm, MapForm },
   computed: {
     currentModal() {
       return this.$store.state.currentModal;

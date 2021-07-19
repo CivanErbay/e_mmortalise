@@ -89,22 +89,19 @@
     </div>
 
     <p class="register-form--text">All fields with * are required</p>
-    <button class="btn-primary" @click="step++">Next</button>
-  </div>
-
-  <div class="second-step" v-show="step == 2">
-    <span>Choose a place</span>
-    <span>Double click to choose a place</span>
-    <div id="Mapbox2"></div>
-    <span>Undo</span>
-    <button class="btn-primary" @click="step++">Next</button>
+    <button
+      class="btn-primary"
+      @click="$store.commit('setModal', modalNamespace.MAP_FORM)"
+    >
+      Next
+    </button>
   </div>
 </template>
 
 <script>
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
-import { mapboxStyle } from "../constants";
+import { mapboxStyle, modalNamespace } from "../constants";
 
 export default {
   name: "MemoryForm",
@@ -116,6 +113,7 @@ export default {
       hometown: "",
       country: "",
       marker: null,
+      modalNamespace,
     };
   },
   methods: {

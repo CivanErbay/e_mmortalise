@@ -39,7 +39,10 @@
       v-else-if="!isMobile && isAuthenticated"
       class="navigation--button-wrapper"
     >
-      <button @click="triggerForm(modalNamespace.FORM_1)" class="btn-primary">
+      <button
+        @click="triggerForm(modalNamespace.MEMORY_FORM)"
+        class="btn-primary"
+      >
         Create Memory
       </button>
       <button @click="handleLogout" class="btn-primary">

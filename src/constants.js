@@ -1,8 +1,8 @@
 export const modalNamespace = {
   REGISTER: "REGISTER",
   LOGIN: "LOGIN",
-  FORM_1: "FORM_1",
-  FORM_2: "FORM_2",
+  MEMORY_FORM: "MEMORY_FORM",
+  MAP_FORM: "MAP_FORM",
 };
 
 export const baseURL = "http://localhost:8080";

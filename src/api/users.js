@@ -2,9 +2,7 @@
 import { users } from "../mock/users";
 
 async function getAllUsers() {
-  return new Promise((resolve) => {
-    resolve(users);
-  });
+  return Promise.resolve(resolve(users));
 }
 
 async function getUserById(id) {
