@@ -3,7 +3,7 @@ export const modalNamespace = {
   LOGIN: "LOGIN",
   MEMORY_FORM: "MEMORY_FORM",
   MAP_FORM: "MAP_FORM",
-  IMAGE_UPLOAD: "IMAGE_UPLOAD",
+  IMAGE_FORM: "IMAGE_FORM",
 };
 
 export const baseURL = "http://localhost:8080";

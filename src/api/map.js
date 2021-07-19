@@ -3,7 +3,7 @@ import { markers } from "../mock/markers";
 
 async function getAllMarkers() {
   // mock
-  return new Promise.resolve(markers);
+  return Promise.resolve(markers);
 
   // const response = await fetch(`${baseURL}/api/v1/memories`, {
   //   method: "GET",

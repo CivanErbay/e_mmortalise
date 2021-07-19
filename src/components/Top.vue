@@ -13,13 +13,29 @@
 
     <p class="subtitle">
       To choose a place for your loved one
-      <a>Click Here</a>
+      <a @click="handleCreateMemory">Click Here</a>
       </p>
   </div>
 </template>
 <script>
+import { modalNamespace } from "./../constants";
+
 export default {
   name: "Top",
+  methods: {
+    handleCreateMemory() {
+      if (!this.isAuthenticated) {
+        this.$store.commit("setModal", modalNamespace.REGISTER);
+      } else {
+        this.$store.commit("setModal", modalNamespace.MEMORY_FORM);
+      }
+    },
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.state.isAuthenticated;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -30,10 +46,10 @@ export default {
     font-size: 26px;
     line-height: 36px;
     font-weight: 500;
-    font-family: 'FontBold';
+    font-family: "FontBold";
 
     span {
-      font-family: 'FontBigCaslon';
+      font-family: "FontBigCaslon";
     }
 
     @include breakpoint(large) {
@@ -45,7 +61,7 @@ export default {
   .subtitle {
     font-size: 18px;
     line-height: 1.3;
-    font-family: 'FontBook';
+    font-family: "FontBook";
 
     @include breakpoint(medium) {
       font-size: 24px;
@@ -54,6 +70,7 @@ export default {
 
     a {
       text-decoration: underline;
+      cursor: pointer;
     }
   }
 }

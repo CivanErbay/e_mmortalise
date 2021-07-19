@@ -4,22 +4,10 @@
     <span>Click to choose a place</span>
     <div id="Mapbox2"></div>
     <span>Undo</span>
-    <button class="btn-primary" @click="handleNext">Next</button>
+    <button class="btn-primary" :disabled="!marker" @click="handleNext">
+      Next
+    </button>
   </div>
-
-  <!-- <div class="third-step">
-    <div class="image-upload">
-      <form
-        method="post"
-        enctype="multipart/form-data"
-        action="/api/v1/memories/uploadImage"
-      >
-        <input type="file" name="imageFile" />
-        <input type="submit" value="Upload" />
-      </form>
-    </div>
-    <button class="btn-primary" @click="TODO">Submit</button>
-  </div> -->
 </template>
 
 <script>
@@ -33,7 +21,7 @@ export default {
   name: "MapForm",
   data() {
     return {
-      marker: new mapboxgl.Marker(),
+      marker: null,
       map: null,
     };
   },
@@ -52,14 +40,15 @@ export default {
       this.map.on("click", this.add_marker.bind(this));
     },
     handleNext() {
-      this.$store.commit("editMemory", { marker: this.marker.getLngLat() });
+      if (!this.marker) return;
 
-      this.$store.commit("setModal", modalNamespace.IMAGE_UPLOAD);
+      this.$store.commit("editMemory", { marker: this.marker.getLngLat() });
+      this.$store.commit("setModal", modalNamespace.IMAGE_FORM);
     },
     add_marker(event) {
+      if (!this.marker) this.marker = new mapboxgl.Marker();
       var coordinates = event.lngLat;
       this.marker.setLngLat(coordinates).addTo(this.map);
-      console.log(this.marker.getLngLat());
     },
   },
 };
