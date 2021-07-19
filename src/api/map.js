@@ -1,34 +1,43 @@
-const baseURL = "http://localhost:8080";
+// import { baseURL } from "../constants";
+import { markers } from "../mock/markers";
 
-/* export function getMarkers() {
+async function getAllMarkers() {
+  // mock
   return new Promise((resolve) => {
-    const markers = [
-      [-3, 36.2],
-      [-3.2, 36.8],
-      [-3.23, 36.52],
-      [12, 23],
-      [13, 2],
-    ];
     resolve(markers);
   });
-} */
 
-export async function getMarkersApiCall() {
-  const response = await fetch(`${baseURL}/api/v1/memories`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.status !== 200) {
-    throw new Error("something went wrong!!!");
-  }
-  return await response.json();
+  // const response = await fetch(`${baseURL}/api/v1/memories`, {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
+  // if (response.status !== 200) {
+  //   throw new Error("something went wrong!!!");
+  // }
+  // return await response.json();
 }
 
+async function getMarkerById(id) {
+  // mock
+  return new Promise((resolve, reject) => {
+    const marker = markers.find((marker) => marker.marker_id === id);
+    if (typeof marker !== "undefined") resolve(marker);
+    else reject("No marker found with ID: " + id);
+  });
+}
 
+async function getUserMarkers(user_id) {
+  // mock
+  return new Promise((resolve, reject) => {
+    const userMarkers = markers.filter((marker) => marker.user_id === user_id);
+    resolve(userMarkers);
+  });
+}
 
 export default {
-  /* getMarkers, */
-  getMarkersApiCall,
+  getAllMarkers,
+  getMarkerById,
+  getUserMarkers,
 };

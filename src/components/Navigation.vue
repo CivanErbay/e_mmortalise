@@ -42,7 +42,9 @@
       <button @click="triggerForm(modalNamespace.FORM_1)" class="btn-primary">
         Create Memory
       </button>
-      <button @click="handleLogout" class="btn-primary">Logout</button>
+      <button @click="handleLogout" class="btn-primary">
+        {{ `Logout (${userModel?.firstName})` }}
+      </button>
     </div>
   </div>
 </template>
@@ -55,9 +57,6 @@ export default {
   name: "Navigation",
   data() {
     return {
-      activeLogin: false,
-      activeRegister: false,
-      activeCreateMemory: false,
       triggerMobileMenu: false,
       modalNamespace,
     };
@@ -67,6 +66,9 @@ export default {
     isAuthenticated() {
       return this.$store.state.isAuthenticated;
     },
+    userModel() {
+      return this.$store.state.userModel;
+    },
   },
   methods: {
     triggerForm(form) {
@@ -74,23 +76,12 @@ export default {
     },
     handleLogout() {
       this.$store.commit("authenticate", false);
+      this.$store.commit("setUserModel", null);
     },
     handleMobileMenu() {
       this.$store.commit("setModal", blur);
       this.triggerMobileMenu = true;
-    }
-  },
-  mounted() {
-    this.$store.watch(
-      (state) => state.isAuthenticated,
-      (value) => {
-        if (value) {
-          this.activeRegister = false;
-          this.activeLogin = false;
-          this.$store.commit("setModal", null);
-        }
-      }
-    );
+    },
   },
 };
 </script>

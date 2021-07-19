@@ -5,6 +5,7 @@ export const store = createStore({
     return {
       currentModal: null,
       isAuthenticated: false,
+      userModel: null,
     };
   },
   mutations: {
@@ -13,6 +14,9 @@ export const store = createStore({
     },
     authenticate(state, payload) {
       state.isAuthenticated = payload;
+    },
+    setUserModel(state, payload) {
+      state.userModel = payload;
     },
   },
 });

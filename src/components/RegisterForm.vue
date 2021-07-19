@@ -20,15 +20,17 @@
     </div>
 
     <p class="register-form--text">
-      By clicking Sign Up, you agree to our <a href="#">Terms</a>. Learn how we collect, use and
-      share your data in our <a href="#">Data Policy</a> and how we use cookies and similar
-      technology in our <a href="#">Cookies Policy</a>.
+      By clicking Sign Up, you agree to our <a href="#">Terms</a>. Learn how we
+      collect, use and share your data in our <a href="#">Data Policy</a> and
+      how we use cookies and similar technology in our
+      <a href="#">Cookies Policy</a>.
     </p>
-    <button class="btn-primary">Register</button>
+    <button class="btn-primary" @click="handleRegister">Register</button>
   </div>
 </template>
 
 <script>
+import userApi from "../api/users";
 export default {
   name: "RegisterForm",
   data() {
@@ -36,8 +38,24 @@ export default {
       firstName: "",
       lastName: "",
       email: "",
-      passsword: "",
+      password: "",
     };
+  },
+  methods: {
+    async handleRegister() {
+      userApi
+        .performRegister(this.$data)
+        .then((userModel) => {
+          this.$store.commit("authenticate", true);
+          this.$store.commit("setUserModel", userModel);
+          this.$store.commit("setModal", null);
+        })
+        .catch((err) => {
+          console.error(err);
+          this.$store.commit("authenticate", false);
+          this.$store.commit("setUserModel", null);
+        });
+    },
   },
 };
 </script>

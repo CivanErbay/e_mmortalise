@@ -7,16 +7,17 @@
       <h5 class="login-form--text">Password</h5>
       <input type="password" v-model="password" />
     </div>
-    <button @click="performLogin" class="btn-primary">Submit</button>
+    <button @click="handleLogin" class="btn-primary">Submit</button>
     <a class="login-form--text" href="#">Forgot Password?</a>
 
     <div class="login-form--bottom">
-        <button class="btn-primary">Create new Account</button>
+      <button class="btn-primary">Create new Account</button>
     </div>
   </div>
 </template>
 
 <script>
+import userApi from "../api/users";
 export default {
   name: "LoginForm",
   data() {
@@ -26,10 +27,21 @@ export default {
     };
   },
   methods: {
-    performLogin() {
-      this.$store.commit('authenticate', true)
-    }
-  }
+    async handleLogin() {
+      userApi
+        .performLogin(this.loginName, this.password)
+        .then((userModel) => {
+          this.$store.commit("authenticate", true);
+          this.$store.commit("setUserModel", userModel);
+          this.$store.commit("setModal", null);
+        })
+        .catch((err) => {
+          console.error(err);
+          this.$store.commit("authenticate", false);
+          this.$store.commit("setUserModel", null);
+        });
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -48,9 +60,9 @@ export default {
   }
 
   &--bottom {
-      margin-top: 25px;
-      width: 100%;
-      border-top: 1px solid $primary-background-color;
+    margin-top: 25px;
+    width: 100%;
+    border-top: 1px solid $primary-background-color;
   }
 
   input {
