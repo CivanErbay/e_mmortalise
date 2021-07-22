@@ -2,11 +2,6 @@
   <div class="map-wrapper">
     <div class="header"><span class="title">Map of Souls</span></div>
     <div id="Mapbox1"></div>
-
-    <div class="inner-wrapper">
-      <img class="mouse-icon" src="./../assets/mouse.png" alt="" />
-      <span>Click on one of the dots to open a memorable site</span>
-    </div>
   </div>
 </template>
 <script>
@@ -64,11 +59,12 @@ export default {
 @import "../styles/variables";
 
 .map-wrapper {
-  min-height: 200px;
-  padding: 2rem;
+  margin-top: -100px;
 
   .header {
-    margin: 30px 0;
+    position: relative;
+    top: 100px;
+    padding: 30px 0;
   }
 
   .title {
@@ -105,6 +101,9 @@ export default {
     width: 90%;
     height: 500px;
     margin-bottom: 1rem;
+    position: relative;
+    top: 85px;
+    border: 2px solid;
   }
 }
 </style>

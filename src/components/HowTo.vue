@@ -34,5 +34,10 @@ export default {
       line-height: 1.5;
     }
   }
+
+  &.section {
+    padding: 130px calc(175px + (300 - 175) * (100vw - 1024px) / (1440 - 1024))
+      20px;
+  }
 }
 </style>
