@@ -76,19 +76,66 @@
     <div class="date-wrapper">
       <h5 class="register-form--text">Date of Birth</h5>
       <div class="birth-wrapper">
-        <input class="input-30" placeholder="DD" v-model="country" /> /
-        <input class="input-30" placeholder="MM" v-model="country" /> /
-        <input class="input-30" placeholder="YY" v-model="country" />
+        <input
+          class="input-30"
+          type="number"
+          min="0"
+          max="31"
+          placeholder="DD"
+          v-model="dateOfBirth.day"
+        />
+        /
+        <input
+          class="input-30"
+          type="number"
+          min="1"
+          max="12"
+          placeholder="MM"
+          v-model="dateOfBirth.month"
+        />
+        /
+        <input
+          class="input-30"
+          type="number"
+          min="1900"
+          max="2100"
+          placeholder="YY"
+          v-model="dateOfBirth.year"
+        />
       </div>
       <h5 class="register-form--text">Date of Passing or Missing</h5>
       <div class="passing-wrapper">
-        <input class="input-30" placeholder="DD" v-model="country" /> /
-        <input class="input-30" placeholder="MM" v-model="country" /> /
-        <input class="input-30" placeholder="YY" v-model="country" />
+        <input
+          class="input-30"
+          type="number"
+          min="0"
+          max="31"
+          placeholder="DD"
+          v-model="dateOfMissing.day"
+        />
+        /
+        <input
+          class="input-30"
+          type="number"
+          min="1"
+          max="12"
+          placeholder="MM"
+          v-model="dateOfMissing.month"
+        />
+        /
+        <input
+          class="input-30"
+          type="number"
+          min="1900"
+          max="2100"
+          placeholder="YY"
+          v-model="dateOfMissing.year"
+        />
       </div>
     </div>
 
     <p class="register-form--text">All fields with * are required</p>
+    <p v-if="error" class="register-form--text--error">{{ error }}</p>
     <button class="btn-primary" @click="handleNext">Next</button>
   </div>
 </template>
@@ -105,6 +152,9 @@ export default {
       lastName: "",
       hometown: "",
       country: "",
+      dateOfBirth: { day: "", month: "", year: "" },
+      dateOfMissing: { day: "", month: "", year: "" },
+      error: null,
     };
   },
   mounted() {
@@ -112,11 +162,34 @@ export default {
   },
   methods: {
     handleNext() {
+      // validate required fields
+      if (
+        !this.firstName ||
+        !this.lastName ||
+        !this.hometown ||
+        !this.country
+      ) {
+        this.error = "Please add the required fields";
+        return;
+      }
+
+      this.error = null;
+
       this.$store.commit("editMemory", {
         firstName: this.firstName,
         lastName: this.lastName,
         hometown: this.hometown,
         country: this.country,
+        dateOfBirth: new Date(
+          this.dateOfBirth.year,
+          this.dateOfBirth.month - 1,
+          this.dateOfBirth.day
+        ),
+        dateOfMissing: new Date(
+          this.dateOfMissing.year,
+          this.dateOfMissing.month - 1,
+          this.dateOfMissing.day
+        ),
       });
       this.$store.commit("setModal", modalNamespace.MAP_FORM);
     },

@@ -60,6 +60,10 @@
     text-decoration: none;
     color: $primary-background-color;
     width: 100%;
+
+    &--error {
+      color: red;
+    }
   }
 
   .input-100 {

@@ -13,7 +13,7 @@
       </div>
 
       <h5 class="register-form--text">Email Adress</h5>
-      <input class="input-100" v-model="email" />
+      <input type="email" class="input-100" v-model="email" />
 
       <h5 class="register-form--text">Password</h5>
       <input class="input-100" type="password" v-model="password" />

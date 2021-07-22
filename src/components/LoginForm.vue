@@ -2,7 +2,7 @@
   <div class="login-form form">
     <div class="form-wrapper">
       <h5 class="login-form--text">Login</h5>
-      <input v-model="loginName" />
+      <input type="email" v-model="loginName" />
 
       <h5 class="login-form--text">Password</h5>
       <input type="password" v-model="password" />
