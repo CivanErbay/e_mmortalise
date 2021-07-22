@@ -1,16 +1,14 @@
 <template lang="">
-    <div v-if="!isMobile" class="footer">
-        <button class="btn-primary">About</button>
-        <button class="btn-primary">Contact Us</button>
-        <button class="btn-primary">Privacy Policy</button>
-        <button class="btn-primary">Terms & Conditions</button>
-    </div>
+  <div v-if="!isMobile" class="footer">
+    <p class="owner">&copy; 2021 Alina Ernesti. All Rights Reserved</p>
+    <button class="btn-primary">Imprint</button>
+  </div>
 </template>
 <script>
 import MobileCheck from "../utils/mobileCheck";
 export default {
   name: "Footer",
-  mixins: [MobileCheck]
+  mixins: [MobileCheck],
 };
 </script>
 <style lang="scss" scoped>
@@ -18,7 +16,7 @@ export default {
 
 .footer {
   height: 80px;
-  padding: 30px 60px;
+  padding: 0 60px;
   display: flex;
   justify-content: flex-end;
   align-content: center;
@@ -31,6 +29,12 @@ export default {
     &:not(:first-child) {
       margin-left: 30px;
     }
+  }
+
+  .owner {
+    position: absolute;
+    left: 0;
+    right: 0;
   }
 }
 </style>
