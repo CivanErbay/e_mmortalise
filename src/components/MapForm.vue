@@ -22,7 +22,6 @@ export default {
   data() {
     return {
       marker: null,
-      map: null,
     };
   },
   mounted() {
@@ -49,6 +48,7 @@ export default {
       if (!this.marker) this.marker = new mapboxgl.Marker();
       var coordinates = event.lngLat;
       this.marker.setLngLat(coordinates).addTo(this.map);
+      //   this.marker.draggable = true;
     },
   },
 };

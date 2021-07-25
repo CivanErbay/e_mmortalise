@@ -26,7 +26,7 @@ export const store = createStore({
     newMemory(state) {
       state.creatingMemory = {};
     },
-    setMarker(state, payload) {
+    selectMarker(state, payload) {
       state.selectedMarker = payload;
     },
   },

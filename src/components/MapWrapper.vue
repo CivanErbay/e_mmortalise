@@ -19,7 +19,6 @@ export default {
   data() {
     return {
       markers: [],
-      map: null,
     };
   },
   mounted() {
@@ -41,19 +40,33 @@ export default {
     }, */
     getMarkers() {
       mapApi.getAllMarkers().then((response) => {
-        const markerArray = response.map((val) => {
-          return val.position;
-        });
-        this.markers = markerArray;
+        this.markers = response;
       });
     },
   },
   watch: {
     markers(markers) {
       markers.forEach((marker) => {
-        new mapboxgl.Marker({ color: "blue", rotation: 0 })
-          .setLngLat(marker)
+        const mapboxMarker = new mapboxgl.Marker({ color: "blue", rotation: 0 })
+          .setLngLat(marker.position)
           .addTo(this.map);
+        mapboxMarker.getElement().addEventListener("click", () => {
+          this.$store.commit("selectMarker", marker);
+          //
+          // create the popup
+          var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+            `<h1>ID: ${marker.marker_id}</h1> <p>LatLon: ${marker.position}</p>`
+          );
+
+          // create DOM element for the marker
+          var el = document.createElement("div");
+          el.id = "marker";
+
+          mapboxMarker
+            .setPopup(popup) // sets a popup on this marker
+            .addTo(this.map);
+        });
+        mapboxMarker.getElement().style.cursor = "pointer";
       });
     },
   },
@@ -98,6 +111,11 @@ export default {
         height: 50px;
       }
     }
+  }
+
+  #marker {
+    display: flex;
+    flex-direction: column;
   }
 
   #Mapbox1 {
