@@ -6,12 +6,8 @@
 </template>
 
 <script>
-import { MglPopup } from "vue-mapbox";
 export default {
-  name: "MarkerTool",
-  components: {
-    MglPopup,
-  },
+  name: "MarkerTooltip",
   setup() {
     return {};
   },
