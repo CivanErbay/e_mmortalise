@@ -141,7 +141,7 @@
 </template>
 
 <script>
-import { modalNamespace } from "../constants";
+import { modalNamespace } from "../../constants";
 
 export default {
   name: "MemoryForm",
@@ -198,5 +198,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/form.scss";
+@import "../../styles/form.scss";
 </style>

@@ -13,11 +13,11 @@
 
 <script>
 import { modalNamespace } from "./../constants";
-import LoginForm from "./LoginForm.vue";
-import RegisterForm from "./RegisterForm.vue";
-import MemoryForm from "./MemoryForm.vue";
+import LoginForm from "./Forms/LoginForm.vue";
+import RegisterForm from "./Forms/RegisterForm.vue";
+import MemoryForm from "./Forms/MemoryForm.vue";
 import MapForm from "./MapForm.vue";
-import ImageForm from "./ImageForm.vue";
+import ImageForm from "./Forms/ImageForm.vue";
 
 export default {
   name: "ModalWrapper",

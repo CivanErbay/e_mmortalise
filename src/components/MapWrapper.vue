@@ -1,35 +1,68 @@
 <template lang="">
   <div class="map-wrapper">
     <div class="header"><span class="title">Map of Souls</span></div>
-    <div id="Mapbox1"></div>
+    <MglMap :accessToken="mapboxToken" :mapStyle="mapboxStyle" @load="onMapLoaded"/>
+    <template v-for="marker in markers" key="marker.id">
+       <MglMarker :coordinates="marker.coordinates" color="blue" />
+    </template>
+    <MarkerTooltip/>
   </div>
 </template>
 <script>
 import "mapbox-gl/dist/mapbox-gl.css";
-import mapboxgl from "mapbox-gl";
+import Mapbox from "mapbox-gl";
+import { MglMap, MglMarker } from "vue-mapbox";
 import mapApi from "../api/map.js";
 import { mapboxStyle, mapboxToken } from "../constants.js";
+import MarkerTooltip from "./MarkerTooltip.vue";
 
 export default {
   name: "MapWrapper",
+  components: {
+    MglMap,
+    MarkerTooltip,
+  },
   data() {
     return {
-      markers: [],
-      map: null,
+      markers: [{coordinates: [31,31]}],
+      // map: null,
+      mapboxToken,
+      mapboxStyle,
     };
   },
-  mounted() {
-    mapboxgl.accessToken = mapboxToken;
-    const map = new mapboxgl.Map({
-      container: "Mapbox1",
-      style: mapboxStyle,
-      center: [-3, 36], // starting position [lng, lat]
-      zoom: 6, // starting zoom
-    });
-    this.map = map;
-    this.getMarkers();
+  created() {
+    this.mapbox = Mapbox;
   },
+  // mounted() {
+  //   mapboxgl.accessToken = mapboxToken;
+  //   const map = new mapboxgl.Map({
+  //     container: "Mapbox1",
+  //     style: mapboxStyle,
+  //     center: [-3, 36], // starting position [lng, lat]
+  //     zoom: 6, // starting zoom
+  //   });
+  //   this.map = map;
+  //   this.getMarkers();
+  // },
   methods: {
+    async onMapLoad(event) {
+      // Here we cathing 'load' map event
+      const asyncActions = event.component.actions;
+
+      const newParams = await asyncActions.flyTo({
+        center: [30, 30],
+        zoom: 9,
+        speed: 1,
+      });
+      console.log(newParams);
+      /* => {
+              center: [30, 30],
+              zoom: 9,
+              bearing: 9,
+              pitch: 7
+            }
+      */
+    },
     /*  getMarkers() {
       mapApi.getMarkers().then((markers) => {
         this.markers = markers;

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import userApi from "../api/users";
+import userApi from "../../api/users";
 export default {
   name: "LoginForm",
   data() {
@@ -45,7 +45,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../styles/variables.scss";
+@import "../../styles/variables.scss";
 
 .login-form {
   width: 315px;

@@ -1,5 +1,7 @@
 // import { baseURL } from "../constants";
 
+import { store } from "../store";
+
 async function getAllUsers() {
   return Promise.resolve(getLocalUsers());
 }
@@ -43,6 +45,12 @@ async function performRegister(userData) {
   });
 }
 
+async function addMemory(memoryData) {
+  store.state.userModel.id;
+
+  return Promise.resolve();
+}
+
 // returns an array
 function getLocalUsers() {
   return JSON.parse(localStorage.getItem("users"));
@@ -58,4 +66,5 @@ export default {
   getUserById,
   performLogin,
   performRegister,
+  addMemory,
 };

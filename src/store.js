@@ -7,6 +7,7 @@ export const store = createStore({
       isAuthenticated: false,
       userModel: null,
       creatingMemory: {},
+      selectedMarker: null,
     };
   },
   mutations: {
@@ -24,6 +25,9 @@ export const store = createStore({
     },
     newMemory(state) {
       state.creatingMemory = {};
+    },
+    setMarker(state, payload) {
+      state.selectedMarker = payload;
     },
   },
 });
