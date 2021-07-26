@@ -42,11 +42,16 @@ export default {
 @import "../styles/variables.scss";
 
 .top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
   .main-title {
     font-size: 26px;
     line-height: 36px;
     font-weight: 500;
     font-family: "FontBold";
+    max-width: 780px;
 
     span {
       font-family: "FontBigCaslon";
@@ -62,6 +67,7 @@ export default {
     font-size: 18px;
     line-height: 1.3;
     font-family: "FontBook";
+    max-width: 780px;
 
     @include breakpoint(medium) {
       font-size: 24px;

@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="how-to section flipped">
+  <div class="how-to section">
     <p>
       This website provides a gathering place to remember and document the
       tragedies of the people you have lost. It‘s hard to imagine the number of
@@ -24,13 +24,17 @@ export default {
 @import "../styles/variables.scss";
 
 .how-to {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   p {
     &:first-child {
-      padding-top: 130px;
+      padding-top: 50px;
     }
     font-size: 18px;
     line-height: 1.3;
     font-family: "FontBook";
+    max-width: 780px;
 
     @include breakpoint(medium) {
       font-size: 24px;

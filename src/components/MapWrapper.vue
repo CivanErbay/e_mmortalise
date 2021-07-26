@@ -2,7 +2,7 @@
   <div class="map-wrapper">
     <div class="header"><span class="title">Map of Souls</span></div>
     <h3 v-if="inactiveMap" @click="inactiveMap = false" class="activate-layer">
-      Activate Interactive Map
+      Click on one of the dots to open a memorable site
     </h3>
     <div :class="{ 'inactive-map': inactiveMap }">
       <div id="Mapbox1">
@@ -146,15 +146,16 @@ export default {
   #Mapbox1 {
     margin: auto;
     width: 90%;
-    height: 500px;
+    height: 615px;
     margin-bottom: 1rem;
     position: relative;
     top: 85px;
     border: 2px solid;
+    max-width: 1200px;
   }
 
   .inactive-map {
-    filter: blur(12px);
+    filter: blur(3px);
     pointer-events: none;
     user-select: none;
   }

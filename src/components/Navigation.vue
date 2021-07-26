@@ -92,11 +92,13 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/variables.scss";
 .navigation {
+  margin: 0 auto;
   height: 90px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
+  max-width: 1200px;
   border-bottom: 3px $primary-background-color solid;
 
   // TODO only for mobile
