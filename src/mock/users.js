@@ -1,10 +1,10 @@
-export const users = [
+const users = [
   {
     firstName: "Civan",
     lastName: "Erbay",
     email: "dsada1@dads.com",
     user_id: 0,
-    marker_ids: [0, 1],
+    memories: [],
     password: "123",
   },
   {
@@ -12,7 +12,7 @@ export const users = [
     lastName: "Muro",
     email: "croketproduction@gmail.com",
     user_id: 1,
-    marker_ids: [2],
+    memories: [],
     password: "123",
   },
   {
@@ -20,7 +20,9 @@ export const users = [
     lastName: "BimBam",
     email: "dsada3@dads.com",
     user_id: 1,
-    marker_ids: [3, 4],
+    memories: [],
     password: "123",
   },
 ];
+
+export default users;

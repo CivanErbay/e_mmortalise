@@ -191,7 +191,7 @@ export default {
           this.dateOfMissing.day
         ),
       });
-      this.$store.commit("setModal", modalNamespace.MAP_FORM);
+      this.$store.commit("setModal", modalNamespace.DESCRIPTION_FORM);
     },
   },
 };

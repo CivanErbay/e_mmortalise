@@ -25,6 +25,7 @@
       how we use cookies and similar technology in our
       <a href="#">Cookies Policy</a>.
     </p>
+    <p v-if="error" class="register-form--text--error">{{ error }}</p>
     <button class="btn-primary" @click="handleRegister">Register</button>
   </div>
 </template>
@@ -39,21 +40,26 @@ export default {
       lastName: "",
       email: "",
       password: "",
+      error: null,
     };
   },
   methods: {
     async handleRegister() {
       userApi
-        .performRegister(this.$data)
+        .performRegister({
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password,
+        })
         .then((userModel) => {
           this.$store.commit("authenticate", true);
           this.$store.commit("setUserModel", userModel);
           this.$store.commit("setModal", null);
         })
         .catch((err) => {
+          this.error = err;
           console.error(err);
-          this.$store.commit("authenticate", false);
-          this.$store.commit("setUserModel", null);
         });
     },
   },

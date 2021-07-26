@@ -5,7 +5,7 @@
         <input type="file" @change="setImgData" name="imageFile" />
         <input type="submit" value="Upload" />
         <div class="img-wrapper">
-          <img :src="image" />
+          <img :src="imageData" />
         </div>
       </div>
       <button class="btn-primary" @click="handleSubmit">Submit</button>
@@ -14,11 +14,13 @@
 </template>
 
 <script>
+import usersApi from "../../api/users";
+
 export default {
   name: "ImageForm",
   data() {
     return {
-      image: null,
+      imageData: "",
     };
   },
   methods: {
@@ -28,23 +30,34 @@ export default {
       this.createImage(files[0]);
     },
     createImage(file) {
-      this.image = new Image();
+      // this.image = new Image();
 
       // I don't know why we need this
-      //   var reader = new FileReader();
-      //   var vm = this;
+      var reader = new FileReader();
+      var vm = this;
 
-      //   reader.onload = (e) => {
-      //     vm.image = e.target.result;
-      //   };
-      //   reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        vm.image = e.target.result;
+        this.imageData = e.target.result;
+      };
+      reader.readAsDataURL(file);
+      // console.log(reader);
     },
     handleSubmit() {
       // handle save of memory
-      console.log(this.image);
-      this.$store.commit("editMemory", { imageData: this.image });
-      // TODO add memory using users api
-      this.$store.commit("setModal", null);
+      // console.log(this.imageData);
+      this.$store.commit("editMemory", { imageData: this.imageData });
+      // add memory using users api
+      const finishedMemory = {
+        ...this.$store.state.creatingMemory,
+        imageData: this.imageData,
+      };
+      usersApi
+        .addMemory(finishedMemory, this.$store.state.userModel.user_id)
+        .then((newMemory) => {
+          this.$store.commit("setModal", null);
+        })
+        .catch((err) => console.log(err));
     },
   },
 };
