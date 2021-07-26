@@ -55,7 +55,7 @@ export default {
 <style lang="scss" scoped>
 #modalBackground {
   background-color: transparent;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   position: fixed;
   height: 100vh;
   width: 100vw;

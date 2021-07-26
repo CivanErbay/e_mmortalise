@@ -22,6 +22,9 @@
       <button @click="triggerForm(modalNamespace.REGISTER)" class="btn-primary">
         Sign Up
       </button>
+      <button @click="triggerForm(modalNamespace.IMPRINT)" class="btn-primary">
+        Imprint
+      </button>
     </div>
     <div
       v-else-if="!isMobile && !isAuthenticated"
@@ -121,8 +124,24 @@ export default {
   }
 
   &--button-wrapper {
+    z-index: 3;
+    position: absolute;
+    flex-direction: column;
+    display: flex;
+    right: 15px;
+    top: 75px;
+
     button {
-      margin-right: 30px;
+      margin-top: 30px;
+    }
+
+    @include breakpoint(medium) {
+      display: block;
+      position: relative;
+
+      button {
+        margin-right: 30px;
+      }
     }
   }
 }
