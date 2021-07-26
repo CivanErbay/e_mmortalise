@@ -138,9 +138,12 @@ export default {
     @include breakpoint(medium) {
       display: block;
       position: relative;
+      top: unset;
+      right: unset;
 
       button {
         margin-right: 30px;
+        margin-top: 0;
       }
     }
   }
