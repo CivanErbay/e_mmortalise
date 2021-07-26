@@ -4,6 +4,7 @@ export const modalNamespace = {
   MEMORY_FORM: "MEMORY_FORM",
   MAP_FORM: "MAP_FORM",
   IMAGE_FORM: "IMAGE_FORM",
+  DESCRIPTION_FORM: "DESCRIPTION_FORM",
 };
 
 export const baseURL = "http://localhost:8080";
