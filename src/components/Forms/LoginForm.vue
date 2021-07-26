@@ -7,6 +7,8 @@
       <h5 class="login-form--text">Password</h5>
       <input type="password" v-model="password" />
     </div>
+
+    <p v-if="error" class="register-form--text--error">{{ error }}</p>
     <button @click="handleLogin" class="btn-primary">Submit</button>
     <a class="login-form--text" href="#">Forgot Password?</a>
 
@@ -24,6 +26,7 @@ export default {
     return {
       loginName: "",
       password: "",
+      error: null,
     };
   },
   methods: {
@@ -36,7 +39,7 @@ export default {
           this.$store.commit("setModal", null);
         })
         .catch((err) => {
-          console.error(err);
+          this.error = err;
           this.$store.commit("authenticate", false);
           this.$store.commit("setUserModel", null);
         });

@@ -14,7 +14,7 @@
 <script>
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
-import mapApi from "../api/map.js";
+import usersApi from "../api/users.js";
 import { mapboxStyle, mapboxToken } from "../constants.js";
 import MarkerTooltip from "./MarkerTooltip.vue";
 
@@ -23,7 +23,6 @@ export default {
   components: { MarkerTooltip },
   data() {
     return {
-      markers: [],
       inactiveMap: true,
     };
   },
@@ -36,7 +35,7 @@ export default {
       zoom: 6, // starting zoom
     });
     this.map = map;
-    this.getMarkers();
+    this.getMemories();
   },
   methods: {
     /*  getMarkers() {
@@ -44,24 +43,29 @@ export default {
         this.markers = markers;
       });
     }, */
-    getMarkers() {
-      mapApi.getAllMarkers().then((response) => {
-        this.markers = response;
+    getMemories() {
+      usersApi.getAllMemories().then((memories) => {
+        this.$store.commit("setMemories", memories);
       });
     },
   },
+  computed: {
+    memories() {
+      return this.$store.state.memories;
+    },
+  },
   watch: {
-    markers(markers) {
-      markers.forEach((marker) => {
+    memories(memories) {
+      memories.forEach((memory) => {
         const mapboxMarker = new mapboxgl.Marker({ color: "blue", rotation: 0 })
-          .setLngLat(marker.position)
+          .setLngLat(memory.marker)
           .addTo(this.map);
         mapboxMarker.getElement().addEventListener("click", () => {
-          this.$store.commit("selectMarker", marker);
+          // this.$store.commit("selectMarker", marker);
           //
           // create the popup
           var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-            `<h1>ID: ${marker.marker_id}</h1> <p>LatLon: ${marker.position}</p>`
+            `<h1>ID: ${memory.memory_id}</h1> <p>LatLon: ${memory.marker.lng}, ${memory.marker.lat}</p>`
           );
 
           // create DOM element for the marker

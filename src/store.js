@@ -8,6 +8,7 @@ export const store = createStore({
       userModel: null,
       creatingMemory: {},
       selectedMarker: null,
+      memories: null,
     };
   },
   mutations: {
@@ -28,6 +29,12 @@ export const store = createStore({
     },
     selectMarker(state, payload) {
       state.selectedMarker = payload;
+    },
+    setMemories(state, payload) {
+      state.memories = payload;
+    },
+    addMemory(state, payload) {
+      state.memories = [...state.memories, payload];
     },
   },
 });

@@ -53,9 +53,10 @@ export default {
         imageData: this.imageData,
       };
       usersApi
-        .addMemory(finishedMemory, this.$store.state.userModel.user_id)
+        .saveMemory(finishedMemory, this.$store.state.userModel.user_id)
         .then((newMemory) => {
           this.$store.commit("setModal", null);
+          this.$store.commit("addMemory", newMemory);
         })
         .catch((err) => console.log(err));
     },
