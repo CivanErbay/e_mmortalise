@@ -29,7 +29,7 @@ async function performRegister(userData) {
 
     // TODO validation checks (minimun characters, valid email format, strong password...)
     if (firstName && lastName && email && password) {
-      const localUsers = getLocalUsers() || [];
+      const localUsers = getLocalUsers();
       const userAlreadyRegistered = localUsers.find((user) => user.email === email);
 
       if (userAlreadyRegistered) reject("This email already has an account: " + email);
@@ -47,9 +47,9 @@ async function performRegister(userData) {
 }
 
 // add memory to user model
-async function addMemory(memoryData, user_id) {
+async function saveMemory(memoryData, user_id) {
   const userModel = await getUserById(user_id);
-  const newMemory = { ...memoryData, memory_id: userModel.memories.length };
+  const newMemory = { ...memoryData, memory_id: userModel.memories.length, user_id };
   userModel.memories = [...userModel.memories, newMemory];
 
   updateLocalUser(userModel);
@@ -57,9 +57,15 @@ async function addMemory(memoryData, user_id) {
   return Promise.resolve(newMemory);
 }
 
+async function getAllMemories() {
+  const allUsers = await getAllUsers();
+  const allMemories = allUsers.reduce((acc, curr) => [...acc, ...curr.memories], []);
+  return allMemories;
+}
+
 // returns an array
 function getLocalUsers() {
-  return JSON.parse(localStorage.getItem("users"));
+  return JSON.parse(localStorage.getItem("users")) || [];
 }
 
 // get mock and local users
@@ -87,5 +93,6 @@ export default {
   getUserById,
   performLogin,
   performRegister,
-  addMemory,
+  addMemory: saveMemory,
+  getAllMemories,
 };

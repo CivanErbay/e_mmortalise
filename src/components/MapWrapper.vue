@@ -14,7 +14,7 @@
 <script>
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
-import mapApi from "../api/map.js";
+import usersApi from "../api/users.js";
 import { mapboxStyle, mapboxToken } from "../constants.js";
 import MarkerTooltip from "./MarkerTooltip.vue";
 
@@ -23,7 +23,6 @@ export default {
   components: { MarkerTooltip },
   data() {
     return {
-      markers: [],
       inactiveMap: true,
     };
   },
@@ -36,7 +35,7 @@ export default {
       zoom: 6, // starting zoom
     });
     this.map = map;
-    this.getMarkers();
+    this.getMemories();
   },
   methods: {
     /*  getMarkers() {
@@ -44,29 +43,38 @@ export default {
         this.markers = markers;
       });
     }, */
-    getMarkers() {
-      mapApi.getAllMarkers().then((response) => {
-        this.markers = response;
+    getMemories() {
+      usersApi.getAllMemories().then((memories) => {
+        this.$store.commit("setMemories", memories);
       });
     },
   },
+  computed: {
+    memories() {
+      return this.$store.state.memories;
+    },
+  },
   watch: {
-    markers(markers) {
-      markers.forEach((marker) => {
+    memories(memories) {
+      memories.forEach((memory) => {
         const mapboxMarker = new mapboxgl.Marker({ color: "blue", rotation: 0 })
-          .setLngLat(marker.position)
+          .setLngLat(memory.marker)
           .addTo(this.map);
         mapboxMarker.getElement().addEventListener("click", () => {
-          this.$store.commit("selectMarker", marker);
+          // this.$store.commit("selectMarker", marker);
           //
           // create the popup
-          var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-            `<h1>ID: ${marker.marker_id}</h1> <p>LatLon: ${marker.position}</p>`
+          var popup = new mapboxgl.Popup({
+            offset: 25,
+            anchor: "left",
+            className: "popup",
+            maxWidth: 500,
+          }).setHTML(
+            `<h1>ID: ${memory.memory_id}</h1>` +
+              `<p>LatLon: ${memory.marker.lng}, ${memory.marker.lat}</p>` +
+              `<p>Description: ${memory.description}, ${memory.marker.lat}</p>` +
+              `<img src="${memory.imageData}" alt="Memory Image" />`
           );
-
-          // create DOM element for the marker
-          var el = document.createElement("div");
-          el.id = "marker";
 
           mapboxMarker
             .setPopup(popup) // sets a popup on this marker
@@ -138,9 +146,24 @@ export default {
     }
   }
 
-  #marker {
-    display: flex;
-    flex-direction: column;
+  .popup {
+    .mapboxgl-popup-content {
+      background-image: linear-gradient(
+        $primary-background-color,
+        $secondary-font-color
+      );
+      display: flex;
+      flex-direction: column;
+
+      width: 280px;
+      min-height: 280px;
+
+      border-radius: 4px;
+      border: 2px solid $primary-font-color;
+      img {
+        width: 100%;
+      }
+    }
   }
 
   #Mapbox1 {
