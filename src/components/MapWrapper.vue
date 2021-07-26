@@ -64,13 +64,17 @@ export default {
           // this.$store.commit("selectMarker", marker);
           //
           // create the popup
-          var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-            `<h1>ID: ${memory.memory_id}</h1> <p>LatLon: ${memory.marker.lng}, ${memory.marker.lat}</p>`
+          var popup = new mapboxgl.Popup({
+            offset: 25,
+            anchor: "left",
+            className: "popup",
+            maxWidth: 500,
+          }).setHTML(
+            `<h1>ID: ${memory.memory_id}</h1>` +
+              `<p>LatLon: ${memory.marker.lng}, ${memory.marker.lat}</p>` +
+              `<p>Description: ${memory.description}, ${memory.marker.lat}</p>` +
+              `<img src="${memory.imageData}" alt="Memory Image" />`
           );
-
-          // create DOM element for the marker
-          var el = document.createElement("div");
-          el.id = "marker";
 
           mapboxMarker
             .setPopup(popup) // sets a popup on this marker
@@ -142,9 +146,24 @@ export default {
     }
   }
 
-  #marker {
-    display: flex;
-    flex-direction: column;
+  .popup {
+    .mapboxgl-popup-content {
+      background-image: linear-gradient(
+        $primary-background-color,
+        $secondary-font-color
+      );
+      display: flex;
+      flex-direction: column;
+
+      width: 280px;
+      min-height: 280px;
+
+      border-radius: 4px;
+      border: 2px solid $primary-font-color;
+      img {
+        width: 100%;
+      }
+    }
   }
 
   #Mapbox1 {

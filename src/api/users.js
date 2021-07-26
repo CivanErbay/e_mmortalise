@@ -60,7 +60,6 @@ async function saveMemory(memoryData, user_id) {
 async function getAllMemories() {
   const allUsers = await getAllUsers();
   const allMemories = allUsers.reduce((acc, curr) => [...acc, ...curr.memories], []);
-  console.log(allMemories);
   return allMemories;
 }
 
