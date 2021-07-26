@@ -1,8 +1,13 @@
 <template lang="">
   <div class="map-wrapper">
     <div class="header"><span class="title">Map of Souls</span></div>
-    <div id="Mapbox1">
-      <MarkerTooltip/>
+    <h3 v-if="inactiveMap" @click="inactiveMap = false" class="activate-layer">
+      Activate Interactive Map
+    </h3>
+    <div :class="{ 'inactive-map': inactiveMap }">
+      <div id="Mapbox1">
+        <MarkerTooltip />
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +24,7 @@ export default {
   data() {
     return {
       markers: [],
+      inactiveMap: true,
     };
   },
   mounted() {
@@ -77,6 +83,25 @@ export default {
 
 .map-wrapper {
   margin-top: -100px;
+  position: relative;
+
+  .activate-layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    font-family: "FontLightItalic";
+    z-index: 3;
+    font-size: 28px;
+    padding: 100px 0;
+    cursor: pointer;
+
+    @include breakpoint(large) {
+      top: 25%;
+      padding: 200px 0;
+      font-size: 58px;
+    }
+  }
 
   .header {
     position: relative;
@@ -126,6 +151,12 @@ export default {
     position: relative;
     top: 85px;
     border: 2px solid;
+  }
+
+  .inactive-map {
+    filter: blur(12px);
+    pointer-events: none;
+    user-select: none;
   }
 }
 </style>

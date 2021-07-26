@@ -25,6 +25,9 @@ export default {
 
 .how-to {
   p {
+    &:first-child {
+      padding-top: 130px;
+    }
     font-size: 18px;
     line-height: 1.3;
     font-family: "FontBook";
@@ -33,11 +36,6 @@ export default {
       font-size: 24px;
       line-height: 1.5;
     }
-  }
-
-  &.section {
-    padding: 130px calc(175px + (300 - 175) * (100vw - 1024px) / (1440 - 1024))
-      20px;
   }
 }
 </style>
