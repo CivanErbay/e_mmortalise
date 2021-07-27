@@ -1,5 +1,6 @@
 // import { baseURL } from "../constants";
 import mockedUsers from "../mock/users";
+import { v4 as uuidv4 } from "uuid";
 
 async function getAllUsers() {
   return Promise.resolve(getMockedAndLocalUsers());
@@ -34,7 +35,7 @@ async function performRegister(userData) {
 
       if (userAlreadyRegistered) reject("This email already has an account: " + email);
       else {
-        const user_id = localUsers.length;
+        const user_id = uuidv4();
         const newUserModel = { ...userData, user_id, memories: [] };
         // save to local storage
         setLocalUsers([...localUsers, newUserModel]);
@@ -49,7 +50,7 @@ async function performRegister(userData) {
 // add memory to user model
 async function saveMemory(memoryData, user_id) {
   const userModel = await getUserById(user_id);
-  const newMemory = { ...memoryData, memory_id: userModel.memories.length, user_id };
+  const newMemory = { ...memoryData, memory_id: uuidv4(), user_id };
   userModel.memories = [...userModel.memories, newMemory];
 
   updateLocalUser(userModel);

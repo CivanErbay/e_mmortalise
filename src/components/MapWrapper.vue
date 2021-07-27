@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       inactiveMap: true,
+      markerIds: [],
     };
   },
   mounted() {
@@ -57,6 +58,22 @@ export default {
   watch: {
     memories(memories) {
       memories.forEach((memory) => {
+        const {
+          firstName,
+          lastName,
+          dateOfBirth,
+          dateOfMissing,
+          hometown,
+          country,
+          imageData,
+          description,
+          user_id,
+          memory_id,
+        } = memory;
+
+        // don't make markers if they already exist
+        if (this.markerIds.contains(memory_id)) return;
+
         // Create a DOM element for each marker.
         var markerEl = document.createElement("div");
         markerEl.className = "marker";
@@ -64,19 +81,8 @@ export default {
         const mapboxMarker = new mapboxgl.Marker(markerEl)
           .setLngLat(memory.marker)
           .addTo(this.map);
-        mapboxMarker.getElement().addEventListener("click", async () => {
-          const {
-            firstName,
-            lastName,
-            dateOfBirth,
-            dateOfMissing,
-            hometown,
-            country,
-            imageData,
-            description,
-            user_id,
-          } = memory;
 
+        mapboxMarker.getElement().addEventListener("click", async () => {
           const publishedBy = await usersApi.getUserById(user_id);
 
           // top
@@ -117,6 +123,8 @@ export default {
             .setPopup(popup) // sets a popup on this marker
             .addTo(this.map);
         });
+
+        this.markerIds.push(memory_id);
       });
     },
   },
