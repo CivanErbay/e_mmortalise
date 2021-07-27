@@ -57,7 +57,11 @@ export default {
   watch: {
     memories(memories) {
       memories.forEach((memory) => {
-        const mapboxMarker = new mapboxgl.Marker({ color: "blue", rotation: 0 })
+        // Create a DOM element for each marker.
+        var markerEl = document.createElement("div");
+        markerEl.className = "marker";
+
+        const mapboxMarker = new mapboxgl.Marker(markerEl)
           .setLngLat(memory.marker)
           .addTo(this.map);
         mapboxMarker.getElement().addEventListener("click", async () => {
@@ -80,11 +84,11 @@ export default {
           popupContent += `<h3>${firstName} ${lastName || ""}</h3>`;
           popupContent += `<p>${
             dateOfBirth
-              ? new Date(dateOfBirth).toLocaleDateString()
+              ? new Date(dateOfBirth).toLocaleDateString("en-GB")
               : "unknown birth date"
           } - ${
             dateOfMissing
-              ? new Date(dateOfMissing).toLocaleDateString()
+              ? new Date(dateOfMissing).toLocaleDateString("en-GB")
               : "unknown last date"
           }</p>`;
           popupContent += `<p>From <span class="underline">${
@@ -113,7 +117,6 @@ export default {
             .setPopup(popup) // sets a popup on this marker
             .addTo(this.map);
         });
-        mapboxMarker.getElement().style.cursor = "pointer";
       });
     },
   },
@@ -177,6 +180,16 @@ export default {
         height: 50px;
       }
     }
+  }
+
+  .marker {
+    cursor: pointer;
+    width: 1.75rem;
+    height: 1.75rem;
+
+    border-radius: 50%;
+    background-color: $primary-background-color;
+    filter: blur(1px);
   }
 
   .popup {

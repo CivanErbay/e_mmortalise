@@ -175,21 +175,32 @@ export default {
 
       this.error = null;
 
+      const dateOfBirth =
+        dateOfBirth.day &&
+        dateOfBirth.month &&
+        dateOfBirth.year &&
+        new Date(
+          this.dateOfBirth.year,
+          this.dateOfBirth.month - 1,
+          this.dateOfBirth.day
+        );
+      const dateOfMissing =
+        dateOfMissing.day &&
+        dateOfMissing.month &&
+        dateOfMissing.year &&
+        new Date(
+          this.dateOfMissing.year,
+          this.dateOfMissing.month - 1,
+          this.dateOfMissing.day
+        );
+
       this.$store.commit("editMemory", {
         firstName: this.firstName,
         lastName: this.lastName,
         hometown: this.hometown,
         country: this.country,
-        dateOfBirth: new Date(
-          this.dateOfBirth.year,
-          this.dateOfBirth.month - 1,
-          this.dateOfBirth.day
-        ),
-        dateOfMissing: new Date(
-          this.dateOfMissing.year,
-          this.dateOfMissing.month - 1,
-          this.dateOfMissing.day
-        ),
+        dateOfBirth,
+        dateOfMissing,
       });
       this.$store.commit("setModal", modalNamespace.DESCRIPTION_FORM);
     },
