@@ -75,8 +75,8 @@ export default {
         if (this.markerIds.includes(memory_id)) return;
 
         // Create a DOM element for each marker.
-        var markerEl = document.createElement("div");
-        markerEl.className = "marker";
+        const markerEl = document.createElement("div");
+        markerEl.className = "marker interactive";
 
         const mapboxMarker = new mapboxgl.Marker(markerEl)
           .setLngLat(memory.marker)
@@ -132,6 +132,7 @@ export default {
 </script>
 <style lang="scss">
 @import "../styles/variables";
+@import "../styles/map";
 
 .map-wrapper {
   position: relative;
@@ -187,73 +188,6 @@ export default {
 
       @include breakpoint(large) {
         height: 50px;
-      }
-    }
-  }
-
-  .marker {
-    cursor: pointer;
-    width: 1.75rem;
-    height: 1.75rem;
-
-    border-radius: 50%;
-    background-color: $primary-background-color;
-    filter: blur(1px);
-    transition: opacity 150ms ease-out;
-
-    &:hover {
-      opacity: 0.6;
-    }
-  }
-
-  .popup {
-    .mapboxgl-popup-content {
-      background-image: linear-gradient(
-        $primary-background-color,
-        $secondary-font-color
-      );
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 2rem;
-
-      width: 280px;
-      min-height: 280px;
-
-      border-radius: 4px;
-      border: 2px solid $primary-font-color;
-
-      p {
-        margin: 0;
-      }
-
-      .underline {
-        text-decoration: underline;
-      }
-
-      .top {
-        color: $secondary-font-color;
-        h3 {
-          font-size: 1.5em;
-        }
-      }
-
-      .img-wrapper {
-        padding: 1rem 2rem;
-        img {
-          width: 100%;
-          border: 2px solid $primary-font-color;
-        }
-      }
-
-      .description {
-        text-align: left;
-        overflow-y: auto; //  TODO fancy caret
-        max-height: 150px;
-      }
-
-      .footer {
-        margin: 1.5rem 0 0 0;
       }
     }
   }

@@ -29,4 +29,13 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/form.scss";
+
+textarea {
+  width: 100%;
+  height: 350px;
+  resize: none;
+  margin-bottom: 1rem;
+
+  border: 2px solid $primary-font-color;
+}
 </style>

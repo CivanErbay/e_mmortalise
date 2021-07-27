@@ -44,10 +44,13 @@ export default {
       this.$store.commit("setModal", modalNamespace.IMAGE_FORM);
     },
     add_marker(event) {
-      if (!this.marker) this.marker = new mapboxgl.Marker();
-      var coordinates = event.lngLat;
+      if (!this.marker) {
+        const markerEl = document.createElement("div");
+        markerEl.className = "marker";
+        this.marker = new mapboxgl.Marker(markerEl);
+      }
+      const coordinates = event.lngLat;
       this.marker.setLngLat(coordinates).addTo(this.map);
-      //   this.marker.draggable = true;
     },
   },
 };
@@ -55,6 +58,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/form.scss";
+@import "../../styles/map.scss";
 
 #Mapbox2 {
   margin: 1rem auto;
