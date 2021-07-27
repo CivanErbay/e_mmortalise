@@ -190,6 +190,11 @@ export default {
     border-radius: 50%;
     background-color: $primary-background-color;
     filter: blur(1px);
+    transition: opacity 150ms ease-out;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 
   .popup {
