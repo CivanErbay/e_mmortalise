@@ -126,8 +126,8 @@ export default {
 @import "../styles/variables";
 
 .map-wrapper {
-  margin-top: -100px;
   position: relative;
+  margin-top: 2rem;
 
   .activate-layer {
     position: absolute;
@@ -149,7 +149,7 @@ export default {
 
   .header {
     position: relative;
-    top: 100px;
+    // top: 100px;
     padding: 30px 0;
   }
 
@@ -255,7 +255,7 @@ export default {
     height: 615px;
     margin-bottom: 1rem;
     position: relative;
-    top: 85px;
+    z-index: 5;
     border: 2px solid;
     max-width: 1200px;
   }
