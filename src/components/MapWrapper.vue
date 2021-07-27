@@ -128,6 +128,7 @@ export default {
 .map-wrapper {
   position: relative;
   margin-top: 2rem;
+  z-index: 5;
 
   .activate-layer {
     position: absolute;
@@ -255,7 +256,6 @@ export default {
     height: 615px;
     margin-bottom: 1rem;
     position: relative;
-    z-index: 5;
     border: 2px solid;
     max-width: 1200px;
   }

@@ -28,6 +28,7 @@ export default {
   flex-direction: column;
   align-items: center;
   z-index: 4;
+  transform: translateY(-80px);
 
   p {
     &:first-child {
