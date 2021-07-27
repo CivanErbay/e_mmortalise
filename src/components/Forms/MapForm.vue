@@ -12,9 +12,8 @@
 
 <script>
 import "mapbox-gl/dist/mapbox-gl.css";
-import { mapboxStyle, mapboxToken } from "../constants.js";
-import { modalNamespace } from "../constants";
-import mapApi from "../api/map.js";
+import { mapboxStyle, mapboxToken } from "../../constants.js";
+import { modalNamespace } from "../../constants";
 import mapboxgl from "mapbox-gl";
 
 export default {
@@ -55,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/form.scss";
+@import "../../styles/form.scss";
 
 #Mapbox2 {
   margin: 1rem auto;

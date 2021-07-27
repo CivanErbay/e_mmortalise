@@ -17,7 +17,7 @@ import { modalNamespace } from "./../constants";
 import LoginForm from "./Forms/LoginForm.vue";
 import RegisterForm from "./Forms/RegisterForm.vue";
 import MemoryForm from "./Forms/PersonForm.vue";
-import MapForm from "./MapForm.vue";
+import MapForm from "./Forms/MapForm.vue";
 import ImageForm from "./Forms/ImageForm.vue";
 import DescriptionForm from "./Forms/DescriptionForm.vue";
 

@@ -93,6 +93,6 @@ export default {
   getUserById,
   performLogin,
   performRegister,
-  addMemory: saveMemory,
+  saveMemory,
   getAllMemories,
 };

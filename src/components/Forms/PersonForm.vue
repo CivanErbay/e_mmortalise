@@ -176,18 +176,18 @@ export default {
       this.error = null;
 
       const dateOfBirth =
-        dateOfBirth.day &&
-        dateOfBirth.month &&
-        dateOfBirth.year &&
+        this.dateOfBirth.day &&
+        this.dateOfBirth.month &&
+        this.dateOfBirth.year &&
         new Date(
           this.dateOfBirth.year,
           this.dateOfBirth.month - 1,
           this.dateOfBirth.day
         );
       const dateOfMissing =
-        dateOfMissing.day &&
-        dateOfMissing.month &&
-        dateOfMissing.year &&
+        this.dateOfMissing.day &&
+        this.dateOfMissing.month &&
+        this.dateOfMissing.year &&
         new Date(
           this.dateOfMissing.year,
           this.dateOfMissing.month - 1,
