@@ -72,7 +72,7 @@ export default {
         } = memory;
 
         // don't make markers if they already exist
-        if (this.markerIds.contains(memory_id)) return;
+        if (this.markerIds.includes(memory_id)) return;
 
         // Create a DOM element for each marker.
         var markerEl = document.createElement("div");
