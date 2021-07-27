@@ -27,7 +27,7 @@ export default {
       if (!this.isAuthenticated) {
         this.$store.commit("setModal", modalNamespace.REGISTER);
       } else {
-        this.$store.commit("setModal", modalNamespace.MEMORY_FORM);
+        this.$store.commit("setModal", modalNamespace.PERSON_FORM);
       }
     },
   },
@@ -45,7 +45,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   .main-title {
     font-size: 26px;
     line-height: 36px;

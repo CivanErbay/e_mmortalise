@@ -41,11 +41,9 @@ export default {
         this.imageData = e.target.result;
       };
       reader.readAsDataURL(file);
-      // console.log(reader);
     },
     handleSubmit() {
       // handle save of memory
-      // console.log(this.imageData);
       this.$store.commit("editMemory", { imageData: this.imageData });
       // add memory using users api
       const finishedMemory = {

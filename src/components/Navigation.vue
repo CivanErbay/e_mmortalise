@@ -43,7 +43,7 @@
       class="navigation--button-wrapper"
     >
       <button
-        @click="triggerForm(modalNamespace.MEMORY_FORM)"
+        @click="triggerForm(modalNamespace.PERSON_FORM)"
         class="btn-primary"
       >
         Create Memory
