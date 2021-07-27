@@ -60,21 +60,54 @@ export default {
         const mapboxMarker = new mapboxgl.Marker({ color: "blue", rotation: 0 })
           .setLngLat(memory.marker)
           .addTo(this.map);
-        mapboxMarker.getElement().addEventListener("click", () => {
-          // this.$store.commit("selectMarker", marker);
-          //
+        mapboxMarker.getElement().addEventListener("click", async () => {
+          const {
+            firstName,
+            lastName,
+            dateOfBirth,
+            dateOfMissing,
+            hometown,
+            country,
+            imageData,
+            description,
+            user_id,
+          } = memory;
+
+          const publishedBy = await usersApi.getUserById(user_id);
+
+          // top
+          let popupContent = '<div class="top">';
+          popupContent += `<h3>${firstName} ${lastName || ""}</h3>`;
+          popupContent += `<p>${
+            dateOfBirth
+              ? new Date(dateOfBirth).toLocaleDateString()
+              : "unknown birth date"
+          } - ${
+            dateOfMissing
+              ? new Date(dateOfMissing).toLocaleDateString()
+              : "unknown last date"
+          }</p>`;
+          popupContent += `<p>From <span class="underline">${
+            hometown || "unknown"
+          }</span> in <span class="underline">${
+            country || "unknown"
+          }</span></p>`;
+          popupContent += "</div>";
+          // image
+          if (imageData)
+            popupContent += `<div class="img-wrapper"><img src="${imageData}" alt="Memory Image" /></div>`;
+          // description
+          popupContent += `<div class="description"><p>${description}</p></div>`;
+          // Footer
+          popupContent += `<div class="footer"><p>Published by <span class="underline">${publishedBy.firstName} ${publishedBy.lastName}</span></p></div>`;
+
           // create the popup
           var popup = new mapboxgl.Popup({
             offset: 25,
             anchor: "left",
             className: "popup",
             maxWidth: 500,
-          }).setHTML(
-            `<h1>ID: ${memory.memory_id}</h1>` +
-              `<p>LatLon: ${memory.marker.lng}, ${memory.marker.lat}</p>` +
-              `<p>Description: ${memory.description}, ${memory.marker.lat}</p>` +
-              `<img src="${memory.imageData}" alt="Memory Image" />`
-          );
+          }).setHTML(popupContent);
 
           mapboxMarker
             .setPopup(popup) // sets a popup on this marker
@@ -154,14 +187,45 @@ export default {
       );
       display: flex;
       flex-direction: column;
+      padding: 2rem;
 
       width: 280px;
       min-height: 280px;
 
       border-radius: 4px;
       border: 2px solid $primary-font-color;
-      img {
-        width: 100%;
+
+      p {
+        margin: 0;
+      }
+
+      .underline {
+        text-decoration: underline;
+      }
+
+      .top {
+        color: $secondary-font-color;
+        h3 {
+          font-size: 1.5em;
+        }
+      }
+
+      .img-wrapper {
+        padding: 1rem 2rem;
+        img {
+          width: 100%;
+          border: 2px solid $primary-font-color;
+        }
+      }
+
+      .description {
+        text-align: left;
+        overflow-y: auto; //  TODO fancy caret
+        max-height: 150px;
+      }
+
+      .footer {
+        margin: 1.5rem 0 0 0;
       }
     }
   }
