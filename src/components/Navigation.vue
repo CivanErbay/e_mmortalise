@@ -14,21 +14,45 @@
         @click="toggleMobileMenu"
       />
       <div
-        v-if="isMobile && triggerMobileMenu && !isAuthenticated"
+        v-if="isMobile && !isAuthenticated && isOpenModal && triggerMobileMenu"
         class="navigation--button-wrapper"
       >
-        <button @click="triggerForm(modalNamespace.LOGIN)" class="btn-primary">
+        <button
+          @click="triggerForm(modalNamespace.LOGIN)"
+          class="btn-primary btn-primary--inverted"
+        >
           Log In
         </button>
         <button
           @click="triggerForm(modalNamespace.REGISTER)"
-          class="btn-primary"
+          class="btn-primary btn-primary--inverted"
         >
           Sign Up
         </button>
         <button
           @click="triggerForm(modalNamespace.IMPRINT)"
-          class="btn-primary"
+          class="btn-primary btn-primary--inverted"
+        >
+          Imprint
+        </button>
+      </div>
+
+      <div
+        v-if="isMobile && isAuthenticated && isOpenModal && triggerMobileMenu"
+        class="navigation--button-wrapper"
+      >
+        <button
+          @click="triggerForm(modalNamespace.PERSON_FORM)"
+          class="btn-primary btn-primary--inverted"
+        >
+          {{ userModel.firstName }} {{ userModel.lastName }}
+        </button>
+        <button @click="handleLogout" class="btn-primary btn-primary--inverted">
+          Logout
+        </button>
+        <button
+          @click="triggerForm(modalNamespace.IMPRINT)"
+          class="btn-primary btn-primary--inverted"
         >
           Imprint
         </button>
@@ -54,13 +78,11 @@
       >
         <button
           @click="triggerForm(modalNamespace.PERSON_FORM)"
-          class="btn-primary"
+          class="btn-primary btn-primary--inverted border-blue"
         >
-          Create Memory
+          {{ userModel.firstName }} {{ userModel.lastName }}
         </button>
-        <button @click="handleLogout" class="btn-primary">
-          {{ `Logout (${userModel?.firstName})` }}
-        </button>
+        <button @click="handleLogout" class="btn-primary">Logout</button>
       </div>
     </div>
   </div>
@@ -86,6 +108,9 @@ export default {
     userModel() {
       return this.$store.state.userModel;
     },
+    isOpenModal() {
+      return this.$store.state.currentModal;
+    },
   },
   methods: {
     triggerForm(form) {
@@ -97,8 +122,8 @@ export default {
       this.$store.commit("setUserModel", null);
     },
     toggleMobileMenu() {
-      // this.$store.commit("setModal", "something");
-      this.triggerMobileMenu = !this.triggerMobileMenu;
+      this.$store.commit("setModal", "mobileNavigation");
+      this.triggerMobileMenu = true;
     },
   },
 };
@@ -141,7 +166,7 @@ export default {
       flex-direction: column;
       display: flex;
       right: 15px;
-      top: 75px;
+      top: 100px;
 
       button {
         margin-top: 30px;

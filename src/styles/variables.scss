@@ -1,42 +1,52 @@
 @font-face {
   font-family: FontBold;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Bold.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Bold.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontBoldItalic;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-BoldItalic.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-BoldItalic.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontBook;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Book.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Book.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontBookItalic;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-BookItalic.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-BookItalic.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontLight;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Light.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Light.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontLightItalic;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-LightItalic.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-LightItalic.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontMedium;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Medium.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Medium.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontMediumItalic;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-MediumItalic.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-MediumItalic.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontRegular;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Regular.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-Regular.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontRegularItalic;
-  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-RegularItalic.otf") format("opentype");
+  src: url("../assets/fonts/ABCFavoritEdu/ABCFavoritEdu-RegularItalic.otf")
+    format("opentype");
 }
 @font-face {
   font-family: FontBigCaslon;
@@ -106,13 +116,19 @@ $secondary-font-color: #ffffff;
   @include breakpoint(xlarge) {
     padding: 60px 300px;
   }
-  background-image: linear-gradient($secondary-background-color, $primary-background-color);
+  background-image: linear-gradient(
+    $secondary-background-color,
+    $primary-background-color
+  );
 
   color: $secondary-font-color;
   text-align: left;
 
   &.flipped {
-    background-image: linear-gradient($primary-background-color, $secondary-background-color);
+    background-image: linear-gradient(
+      $primary-background-color,
+      $secondary-background-color
+    );
   }
 }
 
@@ -126,4 +142,14 @@ $secondary-font-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0px 0px 5px 2px $primary-background-color;
   cursor: pointer;
+
+  &--inverted {
+    background-color: $secondary-font-color;
+    color: $primary-background-color;
+    box-shadow: 0px 0px 5px 2px $secondary-font-color;
+  }
+
+  &.border-blue {
+    box-shadow: 0px 0px 5px 2px $primary-background-color;
+  }
 }

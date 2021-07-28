@@ -22,6 +22,8 @@ export default {
   grid-template-columns: 10% auto 10%;
   justify-items: center;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 
   button {
     color: $secondary-font-color;
