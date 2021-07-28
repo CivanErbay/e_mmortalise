@@ -6,14 +6,14 @@
       alt=""
     />
     <img
-      v-if="isMobile && !triggerMobileMenu"
+      v-if="isMobile"
       class="burger-menu"
       src="./../assets/menu.svg"
       alt=""
-      @click="handleMobileMenu"
+      @click="toggleMobileMenu"
     />
     <div
-      v-else-if="isMobile && triggerMobileMenu && !isAuthenticated"
+      v-if="isMobile && triggerMobileMenu && !isAuthenticated"
       class="navigation--button-wrapper"
     >
       <button @click="triggerForm(modalNamespace.LOGIN)" class="btn-primary">
@@ -79,14 +79,15 @@ export default {
   methods: {
     triggerForm(form) {
       this.$store.commit("setModal", form);
+      this.triggerMobileMenu = false;
     },
     handleLogout() {
       this.$store.commit("authenticate", false);
       this.$store.commit("setUserModel", null);
     },
-    handleMobileMenu() {
-      this.$store.commit("setModal", blur);
-      this.triggerMobileMenu = true;
+    toggleMobileMenu() {
+      // this.$store.commit("setModal", "something");
+      this.triggerMobileMenu = !this.triggerMobileMenu;
     },
   },
 };
