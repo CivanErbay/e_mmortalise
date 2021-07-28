@@ -1,56 +1,67 @@
 <template>
-  <div class="navigation">
-    <img
-      class="navigation--headline"
-      src="./../assets/Logo_300ppi_blau.png"
-      alt=""
-    />
-    <img
-      v-if="isMobile"
-      class="burger-menu"
-      src="./../assets/menu.svg"
-      alt=""
-      @click="toggleMobileMenu"
-    />
-    <div
-      v-if="isMobile && triggerMobileMenu && !isAuthenticated"
-      class="navigation--button-wrapper"
-    >
-      <button @click="triggerForm(modalNamespace.LOGIN)" class="btn-primary">
-        Log In
-      </button>
-      <button @click="triggerForm(modalNamespace.REGISTER)" class="btn-primary">
-        Sign Up
-      </button>
-      <button @click="triggerForm(modalNamespace.IMPRINT)" class="btn-primary">
-        Imprint
-      </button>
-    </div>
-    <div
-      v-else-if="!isMobile && !isAuthenticated"
-      class="navigation--button-wrapper"
-    >
-      <button @click="triggerForm(modalNamespace.LOGIN)" class="btn-primary">
-        Log In
-      </button>
-      <button @click="triggerForm(modalNamespace.REGISTER)" class="btn-primary">
-        Sign Up
-      </button>
-    </div>
-
-    <div
-      v-else-if="!isMobile && isAuthenticated"
-      class="navigation--button-wrapper"
-    >
-      <button
-        @click="triggerForm(modalNamespace.PERSON_FORM)"
-        class="btn-primary"
+  <div class="fixed-wrapper">
+    <div class="navigation">
+      <img
+        class="navigation--headline"
+        src="./../assets/Logo_300ppi_blau.png"
+        alt=""
+      />
+      <img
+        v-if="isMobile"
+        class="burger-menu"
+        src="./../assets/menu.svg"
+        alt=""
+        @click="toggleMobileMenu"
+      />
+      <div
+        v-if="isMobile && triggerMobileMenu && !isAuthenticated"
+        class="navigation--button-wrapper"
       >
-        Create Memory
-      </button>
-      <button @click="handleLogout" class="btn-primary">
-        {{ `Logout (${userModel?.firstName})` }}
-      </button>
+        <button @click="triggerForm(modalNamespace.LOGIN)" class="btn-primary">
+          Log In
+        </button>
+        <button
+          @click="triggerForm(modalNamespace.REGISTER)"
+          class="btn-primary"
+        >
+          Sign Up
+        </button>
+        <button
+          @click="triggerForm(modalNamespace.IMPRINT)"
+          class="btn-primary"
+        >
+          Imprint
+        </button>
+      </div>
+      <div
+        v-else-if="!isMobile && !isAuthenticated"
+        class="navigation--button-wrapper"
+      >
+        <button @click="triggerForm(modalNamespace.LOGIN)" class="btn-primary">
+          Log In
+        </button>
+        <button
+          @click="triggerForm(modalNamespace.REGISTER)"
+          class="btn-primary"
+        >
+          Sign Up
+        </button>
+      </div>
+
+      <div
+        v-else-if="!isMobile && isAuthenticated"
+        class="navigation--button-wrapper"
+      >
+        <button
+          @click="triggerForm(modalNamespace.PERSON_FORM)"
+          class="btn-primary"
+        >
+          Create Memory
+        </button>
+        <button @click="handleLogout" class="btn-primary">
+          {{ `Logout (${userModel?.firstName})` }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -95,56 +106,55 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/variables.scss";
-.navigation {
-  margin: 0 auto;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  max-width: 1200px;
-  border-bottom: 3px $primary-background-color solid;
 
-  // TODO only for mobile
-  // &--button-wrapper {
-  //   z-index: 2;
-  //   @include breakpoint(small) {
-  //     z-index: 1;
-  //   }
-  // }
+.fixed-wrapper {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 25;
+  background: $secondary-font-color;
 
-  &--headline {
-    height: 30px;
-  }
-
-  .burger-menu {
-    height: 40px;
-    position: absolute;
-    top: 22px;
-    right: 25px;
-  }
-
-  &--button-wrapper {
-    z-index: 3;
-    position: absolute;
-    flex-direction: column;
+  .navigation {
+    margin: 0 auto;
+    height: 90px;
     display: flex;
-    right: 15px;
-    top: 75px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    max-width: 1200px;
+    border-bottom: 3px $primary-background-color solid;
 
-    button {
-      margin-top: 30px;
+    &--headline {
+      height: 30px;
     }
 
-    @include breakpoint(medium) {
-      display: block;
-      position: relative;
-      top: unset;
-      right: unset;
+    .burger-menu {
+      height: 40px;
+      position: absolute;
+      top: 22px;
+      right: 25px;
+    }
+
+    &--button-wrapper {
+      z-index: 3;
+      position: absolute;
+      flex-direction: column;
+      display: flex;
+      right: 15px;
+      top: 75px;
 
       button {
-        margin-right: 30px;
-        margin-top: 0;
+        margin-top: 30px;
+      }
+
+      @include breakpoint(medium) {
+        display: block;
+        position: inherit;
+
+        button {
+          margin-right: 30px;
+          margin-top: 0;
+        }
       }
     }
   }

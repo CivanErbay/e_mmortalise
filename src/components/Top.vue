@@ -45,6 +45,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 90px;
 
   .main-title {
     font-size: 26px;
