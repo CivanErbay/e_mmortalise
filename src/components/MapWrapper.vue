@@ -113,7 +113,7 @@ export default {
 
           // create the popup
           var popup = new mapboxgl.Popup({
-            offset: 25,
+            offset: 15,
             anchor: "left",
             className: "popup",
             maxWidth: 500,
