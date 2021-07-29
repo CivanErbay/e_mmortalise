@@ -34,8 +34,8 @@
         <div class="checkbox">
           <input
             type="checkbox"
-            id="friend"
-            value="friend"
+            id="brother"
+            value="brother"
             v-model="checkedInput"
           />
           <label for="mike">Brother</label>
@@ -43,8 +43,8 @@
         <div class="checkbox">
           <input
             type="checkbox"
-            id="friend"
-            value="friend"
+            id="relative"
+            value="relative"
             v-model="checkedInput"
           />
           <label for="mike">Relative</label>
@@ -52,8 +52,8 @@
         <div class="checkbox">
           <input
             type="checkbox"
-            id="friend"
-            value="friend"
+            id="other"
+            value="other"
             v-model="checkedInput"
           />
           <label for="mike">Other</label>

@@ -1,20 +1,20 @@
 <template lang="">
   <div class="top section">
     <p class="main-title">
-      <span>E_MMORTALISE</span> is a virtual place to remember your loved ones who couldn't
-      reach safety.
+      <span>E_MMORTALISE</span> is a virtual place to remember your loved ones
+      who couldn't reach safety.
     </p>
     <p class="subtitle">
       When remembering someone who’s passed away or vanished without a trace, we
       often think of the places that were important to them, like where they
       sought refuge, their old residences, their family home, or places that
-      were special to them. 
+      were special to them.
     </p>
 
     <p class="subtitle">
       To choose a place for your loved one
       <a @click="handleCreateMemory">Click Here</a>
-      </p>
+    </p>
   </div>
 </template>
 <script>
@@ -34,6 +34,9 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$store.state.isAuthenticated;
+    },
+    isOpenModal() {
+      return this.$store.state.currentModal;
     },
   },
 };

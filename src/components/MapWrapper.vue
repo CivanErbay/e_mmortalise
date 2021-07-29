@@ -1,9 +1,9 @@
 <template lang="">
   <div class="map-wrapper">
     <div class="header"><span class="title">Map of Souls</span></div>
-    <h3 v-if="inactiveMap" @click="inactiveMap = false" class="activate-layer">
-      Click on one of the dots to open a memorable site
-    </h3>
+    <div v-if="inactiveMap" @click="inactiveMap = false" class="activate-layer">
+      <button class="btn-primary btn-primary--inverted border-blue"> Click on one of the dots to open a memorable site</button>
+    </div>
     <div :class="{ 'inactive-map': inactiveMap }">
       <div id="Mapbox1">
         <MarkerTooltip />
@@ -32,8 +32,8 @@ export default {
     const map = new mapboxgl.Map({
       container: "Mapbox1",
       style: mapboxStyle,
-      center: [-3, 36], // starting position [lng, lat]
-      zoom: 6, // starting zoom
+      center: [15, 37], // starting position [lng, lat]
+      zoom: 3.5, // starting zoom
     });
     this.map = map;
     this.getMemories();
@@ -113,8 +113,9 @@ export default {
 
           // create the popup
           var popup = new mapboxgl.Popup({
-            offset: 15,
-            anchor: "left",
+            offset: 0,
+            focusAfterOpen: true,
+            anchor: "center", 
             className: "popup",
             maxWidth: 500,
           }).setHTML(popupContent);

@@ -38,7 +38,7 @@
       </div>
 
       <div
-        v-if="isMobile && isAuthenticated && isOpenModal && triggerMobileMenu"
+        v-if="isMobile && isAuthenticated && isOpenModal && triggerMobileMenu && isOpenModal != 'PERSON_FORM'"
         class="navigation--button-wrapper"
       >
         <button
@@ -124,7 +124,8 @@ export default {
     toggleMobileMenu() {
       this.$store.commit("setModal", "mobileNavigation");
       this.triggerMobileMenu = true;
-    },
+      console.log(this.isOpenModal)
+    }
   },
 };
 </script>
