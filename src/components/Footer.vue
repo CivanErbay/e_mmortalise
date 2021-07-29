@@ -2,7 +2,7 @@
   <div v-if="!isMobile" class="footer">
     <span></span>
     <p class="owner">&copy; 2021 Alina Ernesti. All Rights Reserved</p>
-    <button class="btn-primary">Imprint</button>
+    <button class="btn-primary" @click="handleImprint">Imprint</button>
   </div>
 </template>
 <script>
@@ -10,6 +10,11 @@ import MobileCheck from "../utils/mobileCheck";
 export default {
   name: "Footer",
   mixins: [MobileCheck],
+  methods: {
+    handleImprint() {
+      // TODO
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
