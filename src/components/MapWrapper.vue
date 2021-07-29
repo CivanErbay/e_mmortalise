@@ -143,11 +143,11 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    top: 50%;
+   /*  top: 50%; */
     font-family: "FontLightItalic";
     z-index: 3;
     font-size: 28px;
-    padding: 100px 0;
+    padding: 300px 0 200px;
     cursor: pointer;
 
     @include breakpoint(large) {
