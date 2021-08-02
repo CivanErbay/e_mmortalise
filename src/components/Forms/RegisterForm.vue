@@ -70,7 +70,10 @@ export default {
 @import "../../styles/variables.scss";
 
 .register-form {
-  width: 315px;
+  width: 280px;
+  @include breakpoint(medium) {
+    width: 315px;
+  }
 
   .form-wrapper {
     display: flex;
@@ -104,9 +107,13 @@ export default {
   .input-100 {
     margin-bottom: 15px;
     padding: 5px 0;
-    width: 313px;
+    width: 280px;
     outline: none;
     border: 1px solid $primary-background-color;
+
+    @include breakpoint(medium) {
+      width: 315px;
+    }
   }
 }
 </style>

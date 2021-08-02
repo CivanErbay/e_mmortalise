@@ -49,7 +49,7 @@
         class="navigation--button-wrapper"
       >
         <button
-          @click="triggerForm(modalNamespace.PERSON_FORM)"
+          @click="triggerForm(modalNamespace.MAP_FORM)"
           class="btn-primary btn-primary--inverted"
         >
           {{ userModel.firstName }} {{ userModel.lastName }}
@@ -84,7 +84,7 @@
         class="navigation--button-wrapper"
       >
         <button
-          @click="triggerForm(modalNamespace.PERSON_FORM)"
+          @click="triggerForm(modalNamespace.MAP_FORM)"
           class="btn-primary btn-primary--inverted border-blue"
         >
           {{ userModel.firstName }} {{ userModel.lastName }}

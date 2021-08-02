@@ -21,7 +21,7 @@ export default {
   methods: {
     handleNext() {
       this.$store.commit("editMemory", { description: this.description });
-      this.$store.commit("setModal", modalNamespace.MAP_FORM);
+      this.$store.commit("setModal", modalNamespace.IMAGE_FORM);
     },
   },
 };
@@ -35,7 +35,6 @@ textarea {
   height: 350px;
   resize: none;
   margin-bottom: 1rem;
-
   border: 2px solid $primary-font-color;
 }
 </style>

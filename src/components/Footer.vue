@@ -1,8 +1,10 @@
 <template lang="">
-  <div v-if="!isMobile" class="footer">
-    <span></span>
+  <div class="footer">
+    <span v-if="!isMobile"></span>
     <p class="owner">&copy; 2021 Alina Ernesti. All Rights Reserved</p>
-    <button class="btn-primary" @click="handleImprint">Imprint</button>
+    <button v-if="!isMobile" class="btn-primary" @click="handleImprint">
+      Imprint
+    </button>
   </div>
 </template>
 <script>
@@ -23,12 +25,17 @@ export default {
 .footer {
   height: 80px;
   padding: 0 60px;
-  display: grid;
-  grid-template-columns: 10% auto 10%;
+/*   display: grid;
+  grid-template-columns: 10% auto 10%; */
   justify-items: center;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+
+  @include breakpoint(medium) {
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+  }
 
   button {
     color: $secondary-font-color;

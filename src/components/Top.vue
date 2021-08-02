@@ -27,7 +27,7 @@ export default {
       if (!this.isAuthenticated) {
         this.$store.commit("setModal", modalNamespace.REGISTER);
       } else {
-        this.$store.commit("setModal", modalNamespace.PERSON_FORM);
+        this.$store.commit("setModal", modalNamespace.MAP_FORM);
       }
     },
   },

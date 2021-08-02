@@ -1,8 +1,14 @@
 <template lang="">
   <div class="map-wrapper">
     <div class="header"><span class="title">Map of Souls</span></div>
+    <div class="search-wrapper">
+      <img class="search-mock" src="./../assets/search1.png" />
+      <img class="search-mock" src="./../assets/search2.png" />
+    </div>
     <div v-if="inactiveMap" @click="inactiveMap = false" class="activate-layer">
-      <button class="btn-primary btn-primary--inverted border-blue">Click on one of the dots</button>
+      <button class="btn-primary btn-primary--inverted border-blue">
+        Click on one of the dots
+      </button>
     </div>
     <div :class="{ 'inactive-map': inactiveMap }">
       <div id="Mapbox1">
@@ -115,7 +121,7 @@ export default {
           var popup = new mapboxgl.Popup({
             offset: 0,
             focusAfterOpen: true,
-            anchor: "center", 
+            anchor: "center",
             className: "popup",
             maxWidth: 500,
           }).setHTML(popupContent);
@@ -139,12 +145,35 @@ export default {
   position: relative;
   margin-top: 2rem;
   z-index: 5;
+  max-width: 1260px;
+  margin: 0 auto;
+
+  .search-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    right: 50px;
+    top: 150px;
+
+    @include breakpoint(medium) {
+      right: 80px;
+    }
+
+    @include breakpoint(xlarge) {
+      right: 100px;
+    }
+
+    .search-mock {
+      height: 40px;
+    }
+  }
 
   .activate-layer {
     position: absolute;
     left: 0;
     right: 0;
-   /*  top: 50%; */
+    /*  top: 50%; */
     font-family: "FontLightItalic";
     z-index: 3;
     font-size: 28px;

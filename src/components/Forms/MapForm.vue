@@ -41,7 +41,7 @@ export default {
       if (!this.marker) return;
 
       this.$store.commit("editMemory", { marker: this.marker.getLngLat() });
-      this.$store.commit("setModal", modalNamespace.IMAGE_FORM);
+      this.$store.commit("setModal", modalNamespace.PERSON_FORM);
     },
     add_marker(event) {
       if (!this.marker) {
@@ -61,9 +61,17 @@ export default {
 @import "../../styles/map.scss";
 
 .mapboxgl-popup-close-button {
-  color: white;
-  padding: 20px;
-  transform: scale(3);
+  color: white !important;
+  padding: 20px !important;
+  transform: scale(3) important;
+}
+
+#Mapbox1 {
+  .mapboxgl-popup-close-button {
+    color: white !important;
+    padding: 20px !important;
+    transform: scale(3) important;
+  }
 }
 
 #Mapbox2 {
@@ -76,6 +84,12 @@ export default {
   .mapboxgl-canvas {
     position: absolute;
     top: 100px;
+  }
+
+  .mapboxgl-popup-close-button {
+    color: white !important;
+    padding: 20px !important;
+    transform: scale(3) important;
   }
 }
 </style>

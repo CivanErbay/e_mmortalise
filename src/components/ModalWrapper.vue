@@ -5,9 +5,9 @@
     <RegisterForm v-if="currentModal === modalNamespace.REGISTER" />
   </template>
   <template v-if="isAuthenticated">
+    <MapForm v-if="currentModal === modalNamespace.MAP_FORM" />
     <MemoryForm v-if="currentModal === modalNamespace.PERSON_FORM" />
     <DescriptionForm v-if="currentModal === modalNamespace.DESCRIPTION_FORM" />
-    <MapForm v-if="currentModal === modalNamespace.MAP_FORM" />
     <ImageForm v-if="currentModal === modalNamespace.IMAGE_FORM" />
   </template>
 </template>

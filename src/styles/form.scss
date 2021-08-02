@@ -1,7 +1,12 @@
 @import "./variables.scss";
 
 .register-form {
-  width: 315px;
+  width: 280px;
+  
+  @include breakpoint(medium) {
+    width: 315px;
+  }
+
   min-height: 500px;
 
   .form-wrapper {
