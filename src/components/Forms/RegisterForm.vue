@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../../styles/variables.scss";
 
 .register-form {
@@ -107,7 +107,7 @@ export default {
   .input-100 {
     margin-bottom: 15px;
     padding: 5px 0;
-    width: 280px;
+    width: 280px !important;
     outline: none;
     border: 1px solid $primary-background-color;
 

@@ -166,8 +166,11 @@ export default {
 
     &--headline {
       height: 30px;
-      top: 5px;
-      position: relative;
+
+      @include breakpoint(medium) {
+        top: 5px;
+        position: relative;
+      }
     }
 
     .burger-menu {

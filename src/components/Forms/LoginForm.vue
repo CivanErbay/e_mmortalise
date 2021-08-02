@@ -51,7 +51,10 @@ export default {
 @import "../../styles/variables.scss";
 
 .login-form {
-  width: 315px;
+  width: 280px;
+  @include breakpoint(medium) {
+    width: 315px;
+  }
 
   &--text {
     text-align: left;

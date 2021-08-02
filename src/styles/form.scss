@@ -2,7 +2,7 @@
 
 .register-form {
   width: 280px;
-  
+
   @include breakpoint(medium) {
     width: 315px;
   }
@@ -74,9 +74,13 @@
   .input-100 {
     margin-bottom: 15px;
     padding: 5px 0;
-    width: 313px;
+    width: 280px !important;
     outline: none;
     border: 1px solid $primary-background-color;
+
+    @include breakpoint(medium) {
+      width: 315px;
+    }
   }
 
   .input-30 {
