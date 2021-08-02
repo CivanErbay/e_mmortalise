@@ -2,7 +2,7 @@
   <div class="map-wrapper">
     <div class="header"><span class="title">Map of Souls</span></div>
     <div v-if="inactiveMap" @click="inactiveMap = false" class="activate-layer">
-      <button class="btn-primary btn-primary--inverted border-blue"> Click on one of the dots to open a memorable site</button>
+      <button class="btn-primary btn-primary--inverted border-blue">Click on one of the dots</button>
     </div>
     <div :class="{ 'inactive-map': inactiveMap }">
       <div id="Mapbox1">

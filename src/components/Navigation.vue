@@ -2,6 +2,7 @@
   <div class="fixed-wrapper">
     <div class="navigation">
       <img
+        @click="reloadPage"
         class="navigation--headline"
         src="./../assets/Logo_300ppi_blau.png"
         alt=""
@@ -38,7 +39,13 @@
       </div>
 
       <div
-        v-if="isMobile && isAuthenticated && isOpenModal && triggerMobileMenu && isOpenModal != 'PERSON_FORM'"
+        v-if="
+          isMobile &&
+          isAuthenticated &&
+          isOpenModal &&
+          triggerMobileMenu &&
+          isOpenModal != 'PERSON_FORM'
+        "
         class="navigation--button-wrapper"
       >
         <button
@@ -124,8 +131,11 @@ export default {
     toggleMobileMenu() {
       this.$store.commit("setModal", "mobileNavigation");
       this.triggerMobileMenu = true;
-      console.log(this.isOpenModal)
-    }
+      console.log(this.isOpenModal);
+    },
+    reloadPage() {
+      window.location.reload();
+    },
   },
 };
 </script>
@@ -140,6 +150,10 @@ export default {
   z-index: 25;
   background: $secondary-font-color;
 
+  img {
+    cursor: pointer;
+  }
+
   .navigation {
     margin: 0 auto;
     height: 90px;
@@ -152,6 +166,8 @@ export default {
 
     &--headline {
       height: 30px;
+      top: 5px;
+      position: relative;
     }
 
     .burger-menu {

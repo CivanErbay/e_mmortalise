@@ -60,6 +60,12 @@ export default {
 @import "../../styles/form.scss";
 @import "../../styles/map.scss";
 
+.mapboxgl-popup-close-button {
+  color: white;
+  padding: 20px;
+  transform: scale(3);
+}
+
 #Mapbox2 {
   margin: 1rem auto;
   //   transform: scale(1.75);
