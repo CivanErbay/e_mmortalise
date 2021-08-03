@@ -148,6 +148,22 @@ export default {
   max-width: 1260px;
   margin: 0 auto;
 
+  .mapboxgl-popup-close-button {
+    color: white !important;
+    padding: 20px !important;
+    transform: scale(3) !important;
+    outline: none;
+  }
+
+  #Mapbox1 {
+    .mapboxgl-popup-close-button {
+      color: white !important;
+      padding: 20px !important;
+      transform: scale(3) !important;
+      outline: none;
+    }
+  }
+
   .search-wrapper {
     position: absolute;
     display: flex;

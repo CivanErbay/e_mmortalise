@@ -15,7 +15,7 @@
         @click="toggleMobileMenu"
       />
       <div
-        v-if="isMobile && !isAuthenticated && isOpenModal && triggerMobileMenu"
+        v-if="isMobile && !isAuthenticated && isOpenModal && triggerMobileMenu && isOpenModal != 'REGISTER'"
         class="navigation--button-wrapper"
       >
         <button
@@ -44,7 +44,7 @@
           isAuthenticated &&
           isOpenModal &&
           triggerMobileMenu &&
-          isOpenModal != 'PERSON_FORM'
+          isOpenModal != 'MAP_FORM'
         "
         class="navigation--button-wrapper"
       >

@@ -25,6 +25,7 @@ export default {
   },
   mounted() {
     this.setupMap();
+    this.$store.commit("newMemory");
   },
   methods: {
     setupMap() {
@@ -39,7 +40,6 @@ export default {
     },
     handleNext() {
       if (!this.marker) return;
-
       this.$store.commit("editMemory", { marker: this.marker.getLngLat() });
       this.$store.commit("setModal", modalNamespace.PERSON_FORM);
     },
@@ -60,20 +60,6 @@ export default {
 @import "../../styles/form.scss";
 @import "../../styles/map.scss";
 
-.mapboxgl-popup-close-button {
-  color: white !important;
-  padding: 20px !important;
-  transform: scale(3) important;
-}
-
-#Mapbox1 {
-  .mapboxgl-popup-close-button {
-    color: white !important;
-    padding: 20px !important;
-    transform: scale(3) important;
-  }
-}
-
 #Mapbox2 {
   margin: 1rem auto;
   //   transform: scale(1.75);
@@ -84,12 +70,6 @@ export default {
   .mapboxgl-canvas {
     position: absolute;
     top: 100px;
-  }
-
-  .mapboxgl-popup-close-button {
-    color: white !important;
-    padding: 20px !important;
-    transform: scale(3) important;
   }
 }
 </style>

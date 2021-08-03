@@ -97,17 +97,21 @@ export default {
   }
 
   .input-50 {
-    width: 130px;
+    width: 125px;
     height: 15px;
     padding: 5px;
     outline: none;
     border: 1px solid $primary-background-color;
+
+    @include breakpoint(large) {
+      width: 140px;
+    }
   }
 
   .input-100 {
     margin-bottom: 15px;
     padding: 5px 0;
-    width: 280px !important;
+    width: 280px;
     outline: none;
     border: 1px solid $primary-background-color;
 

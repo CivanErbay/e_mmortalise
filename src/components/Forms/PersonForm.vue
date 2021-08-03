@@ -158,7 +158,7 @@ export default {
     };
   },
   mounted() {
-    this.$store.commit("newMemory");
+   /*  this.$store.commit("newMemory"); */
   },
   methods: {
     handleNext() {
